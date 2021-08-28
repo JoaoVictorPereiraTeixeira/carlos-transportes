@@ -17,11 +17,8 @@ const useStyles = makeStyles((theme : Theme) => ({
     },
     logo:{
         paddingTop:4,
-        width: 100,
-    },
-    button:{
-        fontSize:9,
-    },
+        width: 200,
+    }
 }));
 
 export const Navbar : React.FC = (props: Props) => {
@@ -34,11 +31,11 @@ export const Navbar : React.FC = (props: Props) => {
                     <img src={logo} alt="Carlos Transportes" className={classes.logo}/>
                 </Typography>
                 
-                <Button color="inherit" className={classes.button}>Trabalhos realizados</Button>
-                <Button color="inherit" className={classes.button}>Empresas</Button>
-                <Button color="inherit" className={classes.button}>Serviços </Button>
-                <Button color="inherit" className={classes.button}>Contato</Button>
-                <Button color="inherit" className={classes.button}>Sobre nós</Button>
+                <Button color="inherit">Trabalhos realizados</Button>
+                <Button color="inherit">Empresas</Button>
+                <Button color="inherit">Serviços </Button>
+                <Button color="inherit">Contato</Button>
+                <Button color="inherit">Sobre nós</Button>
             </Toolbar>
         </AppBar>
     );
