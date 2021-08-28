@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { AppBar, Button, makeStyles, Toolbar, Typography, Theme, IconButton, Icon} from '@material-ui/core';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 import logo from '../../static/img/logo.png'
 
@@ -25,12 +24,11 @@ const useStyles = makeStyles((theme : Theme) => ({
     },
 }));
 
-export const Navbar = (props: Props) => {
+export const Navbar : React.FC = (props: Props) => {
     const classes = useStyles();
 
     return (
         <AppBar>
-            
             <Toolbar variant='dense' className={classes.toolbar}>
                 <Typography className={classes.title}>
                     <img src={logo} alt="Carlos Transportes" className={classes.logo}/>
