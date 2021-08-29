@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {RouteProps} from 'react-router-dom'
+import CotacaoPage from '../pages/cotacao/PageForm';
+import {RouteProps} from 'react-router-dom';
 
 export interface myRouteProps extends RouteProps{
     name: string;
@@ -11,37 +12,44 @@ const routes: myRouteProps[] = [
         name: 'home',
         label: 'Home',
         path: '/',
-        exact: true
+        exact: true,
+    },
+    {
+        name: 'cotacao',
+        label: 'Cotação',
+        path: '/cotacao',
+        exact: true,
+        component: CotacaoPage
     },
     {
         name: 'trabalhosRealizados',
         label: 'Trabalhos Realizados',
         path: '/trabalhos-realizados',
-        exact: true
+        exact: true,
     },
     {
         name: 'empresas',
         label: 'Empresas',
         path: '/empresas',
-        exact: true
+        exact: true,
     },
     {
         name: 'servicos',
         label: 'Serviços prestados',
         path: '/servicos',
-        exact: true
+        exact: true,
     },
     {
         name: 'contato',
         label: 'Contato',
         path: '/contato',
-        exact: true
+        exact: true,
     },
     {
         name: 'sobreNos',
         label: 'Sobre nós',
         path: '/sobre-nos',
-        exact: true
+        exact: true,
     }
 ];
 

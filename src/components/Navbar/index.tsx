@@ -13,6 +13,7 @@ const listRoutes: any = {
     'servicos' : 'Serviços',
     'contato' : 'Contato',
     'sobreNos' : 'Sobre nós',
+    'cotacao' : 'Cotação'
 }
 
 const menuRoutes = routes.filter(route => Object.keys(listRoutes).includes(route.name))
@@ -68,7 +69,5 @@ export const Navbar : React.FC = (props: Props) => {
                 }
             </>
         </Toolbar>
-      
-    </AppBar>
-    
+    </AppBar>    
 };
