@@ -32,13 +32,11 @@ export default function FormPropsTextFields() {
   return (
     <form className={classes.root} noValidate autoComplete="off">
         <p>
-            De mudança?
-
-            Bora facilitar tudo isso! 😁 Confira os horários que estamos disponíveis no calendário abaixo, após isso simplesmente preencha o formulário  logo abaixo e entraremos em contato  o mais rápido possível 
+        Confira os horários que estamos disponíveis no calendário abaixo, após isso simplesmente preencha o formulário  abaixo e entraremos em contato o mais rápido possível 👍
         </p>
         <br/>
-         
       <div>
+          
          <TextField id="outlined-basic" label="Nome solicitante" variant="outlined" style = {{width:"31%"}}/>
          <TextField id="outlined-basic" label="Telefone solicitante" variant="outlined" style = {{width:"27%"}} />
          <TextField id="outlined-basic" label="Telefone solicitante" variant="outlined" style = {{width:"27%"}} />
@@ -83,47 +81,6 @@ export default function FormPropsTextFields() {
          <TextField
             select
             defaultValue= {[]}
-            label="Tipo de moradia"
-            margin={'normal'}
-            variant={'outlined'}
-            fullWidth
-         >
-            <MenuItem value="" disabled>
-                <em>Selecione tipo moradia</em>
-            </MenuItem>
-            <MenuItem value="casa">
-                <em>Casa</em>
-            </MenuItem>
-            <MenuItem value="apartamento">
-                <em>Apartamento</em>
-            </MenuItem>
-            <MenuItem value="condominio">
-                <em>Condominio</em>
-            </MenuItem>
-        </TextField>
-
-        <TextField
-            select
-            defaultValue= {[]}
-            label="Possui elevador?"
-            margin={'normal'}
-            variant={'outlined'}
-            fullWidth
-         >
-            <MenuItem value="" disabled>
-                <em>Selecione sim ou não</em>
-            </MenuItem>
-            <MenuItem value="casa">
-                <em>Sim</em>
-            </MenuItem>
-            <MenuItem value="apartamento">
-                <em>Não</em>
-            </MenuItem>
-        </TextField>
-
-        <TextField
-            select
-            defaultValue= {[]}
             label="Precisa de ajudante?"
             margin={'normal'}
             variant={'outlined'}
@@ -140,6 +97,7 @@ export default function FormPropsTextFields() {
             </MenuItem>
         </TextField>
 
+         <TextField id="outlined-basic" label="Observações para mercadoria" variant="outlined"  multiline rows="4" style = {{width:"100%"}}/>
         <br/>
         <br/>
         

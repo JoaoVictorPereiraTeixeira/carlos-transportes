@@ -7,6 +7,12 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import FormMudancas from './formMudancas';
+import FormFretesEmpresariais from './formFretesEmpresariais'
+import FormCarretosFretesComuns from './formCarretosFretesComuns';
+import useWindowDimensions from '../../utils/responsive/index';
+
+
+
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -53,6 +59,8 @@ export default function FullWidthTabs() {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
+  let windowDimensions = useWindowDimensions();
+
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
@@ -70,7 +78,7 @@ export default function FullWidthTabs() {
           onChange={handleChange}
           indicatorColor="primary"
           textColor="primary"
-          variant="standard"
+          variant={windowDimensions.width > 780 ? "standard"  : "fullWidth"}
         >
           <Tab label="Fretes Empresáriais" {...a11yProps(0)} />
           <Tab label="Mudanças" {...a11yProps(1)} />
@@ -83,13 +91,13 @@ export default function FullWidthTabs() {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          <FormMudancas/>
+          <FormFretesEmpresariais/>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          Item Two
+          <FormMudancas/>
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
-          Item Three
+          <FormCarretosFretesComuns/>
         </TabPanel>
       </SwipeableViews>
     </div>

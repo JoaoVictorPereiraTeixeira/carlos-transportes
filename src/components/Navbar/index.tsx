@@ -51,7 +51,7 @@ export const Navbar : React.FC = (props: Props) => {
             </Typography>
 
             <>
-                {windowDimensions.width > 850 ? 
+                {windowDimensions.width > 910 ? 
                     (
                         Object.keys(listRoutes).map(
                             (routeName, key) => {
