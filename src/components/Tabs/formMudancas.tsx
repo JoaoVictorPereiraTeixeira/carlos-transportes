@@ -7,6 +7,7 @@ import DateFnsUtils from '@date-io/date-fns';
 import {
     MuiPickersUtilsProvider
   } from '@material-ui/pickers';
+import { ComboItems } from '../ComboItems';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -22,12 +23,27 @@ const useStyles = makeStyles((theme: Theme) =>
     buttonSubmit: {
         flexGrow: 1,
         textAlign:'center',
+        marginTop:'20px'
     },
   }),
 );
 
 export default function FormPropsTextFields() {
   const classes = useStyles();
+  let defaultItemsTransport = [
+        "Cama montada",
+        "Cama desmontada",
+        "Guarda-roupa montado",
+        "Guarda-roupa desmontado",
+        "Amário montado",
+        "Armário desmontado",
+        "Geladeira",
+        "Fogão",
+        "Mesa montada",
+        "Mesa desmontada",
+        "Sofá",
+        "Televisão"
+    ]
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
@@ -42,10 +58,7 @@ export default function FormPropsTextFields() {
          <TextField id="outlined-basic" label="Nome solicitante" variant="outlined" style = {{width:"31%"}}/>
          <TextField id="outlined-basic" label="Telefone solicitante" variant="outlined" style = {{width:"27%"}} />
          <TextField id="outlined-basic" label="Telefone solicitante" variant="outlined" style = {{width:"27%"}} />
-
-         <br/>
-         <br/>
-
+    
          <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <TextField
                     id="datetime-local"
@@ -142,6 +155,8 @@ export default function FormPropsTextFields() {
 
         <br/>
         <br/>
+
+        <ComboItems defaultValues={defaultItemsTransport}/>
         
         <Typography className={classes.buttonSubmit}>
             <Button variant="contained" size="large" color="primary" className={classes.buttonSubmit}>
