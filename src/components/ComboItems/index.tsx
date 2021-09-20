@@ -8,19 +8,7 @@ type Props = {
     defaultValues: string[]
 };
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    additionMenu: {
-        display: "flex",
-        alignItems: "center"
-    }
-  }),
-);
-
-
 export const ComboItems = (props: Props) => {
-    const classes = useStyles();
-
     return (    
         <div>
           <AdditionMenu/>
