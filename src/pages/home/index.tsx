@@ -19,10 +19,14 @@ const useStyles = makeStyles((theme : Theme) => ({
         marginTop:"100px"
     },
     backgroundHome:{
+        marginTop:"-10px",
         backgroundImage: `url(${backgroundHome})`,
-        backgroundPosition: 'center', 
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat'
+        backgroundRepeat: 'no-repeat',
+        display: "table",
+        width: "100%",
+        height: "20%",
+        padding:" 100px 0"
+
     },
     principles:{
         marginTop:"10%"
@@ -42,7 +46,7 @@ export const HomePage = (props: PageFormProps) => {
     console.log(innerHeight) //TODO
    
     return (
-       <div>
+       <div className={classes.backgroundHome}>
             <Page>
                 <div className={classes.container}>
                     <LogoHome/>

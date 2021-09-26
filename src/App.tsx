@@ -6,7 +6,6 @@ import GoogleFonts from 'react-google-fonts';
 import { BrowserRouter } from 'react-router-dom';
 import AppRouter  from './routes/AppRouter';
 import { Box, CssBaseline } from '@material-ui/core';
-import Footer from './components/Footer';
 
 const App : React.FC = () => {
   return (
@@ -17,7 +16,6 @@ const App : React.FC = () => {
         <Box>
           <AppRouter/>
         </Box>
-        <Footer/>
       </BrowserRouter>
     </React.Fragment>
   );
