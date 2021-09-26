@@ -7,10 +7,6 @@ import iconPhone from '../../static/img/iconPhone.png'
 import iconComment from '../../static/img/iconComment.png'
 
 
-
-
-
-
 type Props = {
     
 };

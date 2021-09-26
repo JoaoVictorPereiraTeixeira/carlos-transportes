@@ -3,6 +3,7 @@ import CotacaoPage from '../pages/cotacao/PageForm';
 import HomePage from '../pages/home/index'
 import {RouteProps} from 'react-router-dom';
 import SobreNosPage from '../pages/sobre-nos';
+import ContatoPage from '../pages/contato'
 
 export interface myRouteProps extends RouteProps{
     name: string;
@@ -47,6 +48,8 @@ const routes: myRouteProps[] = [
         label: 'Contato',
         path: '/contato',
         exact: true,
+        component: ContatoPage
+
     },
     {
         name: 'sobreNos',
