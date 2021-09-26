@@ -44,7 +44,7 @@ export const Navbar : React.FC = (props: Props) => {
     const classes = useStyles();
     let windowDimensions = useWindowDimensions();
 
-    return <AppBar>
+    return <AppBar position="static">
         <Toolbar variant='dense' className={classes.toolbar}>
             <Typography className={classes.title}>
                 <img src={logo} alt="Carlos Transportes" className={classes.logo}/>

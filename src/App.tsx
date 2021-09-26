@@ -13,7 +13,7 @@ const App : React.FC = () => {
       <CssBaseline />
       <BrowserRouter>
         <Navbar/>
-        <Box paddingTop={'120px'}>
+        <Box>
           <AppRouter/>
         </Box>
       </BrowserRouter>

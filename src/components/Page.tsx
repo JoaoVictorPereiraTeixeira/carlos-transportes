@@ -9,13 +9,16 @@ const useStyles = makeStyles({
     }
 });
 
+type PageProps = {
+    
+};
 
 export const Page: React.FC = (props) => {
     const classes = useStyles();
 
     return (
        <Container>
-           <Box >
+           <Box>
                {props.children}
            </Box>
        </Container>

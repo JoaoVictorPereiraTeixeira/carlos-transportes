@@ -1,37 +1,63 @@
-import React from 'react';
-import Tabs from '../../components/Tabs/Tabs'
-import useWindowDimensions from '../../utils/responsive/index'
 
 import { Page } from '../../components/Page';
-import { Box, makeStyles, Typography, Theme } from '@material-ui/core';
-import logo from '../../static/img/table-truck-image.png'
+import { Box, makeStyles, Typography, Theme, Container } from '@material-ui/core';
 import Principles from '../../components/Principles';
+import Modalities from '../../components/Modalities';
+import LogoHome from '../../components/LogoHome';
+import backgroundHome from '../../static/img/backgroundHome.png'
+import useWindowDimensions from '../../utils/responsive/index'
+import WhoIAm from '../../components/WhoIAm';
 
 interface PageFormProps {
     
 };
 
+
 const useStyles = makeStyles((theme : Theme) => ({
-    logo:{
-        paddingTop:4,
-        width: 120
+    container:{
+        marginTop:"100px"
     },
-    tabTruck:{
-      grow:1,
-      position:'relative',
-      top:65,
-      left: 20
+    backgroundHome:{
+        backgroundImage: `url(${backgroundHome})`,
+        backgroundPosition: 'center', 
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat'
+    },
+    principles:{
+        marginTop:"10%"
+    },
+    whoIAm : {
+        marginTop: "280px"
     }
 }));
 
 
 export const HomePage = (props: PageFormProps) => {
     const classes = useStyles();
-    let windowDimensions = useWindowDimensions();
+    const {innerHeight } = window;
+    console.log(innerHeight) //TODO
+   
     return (
-       <Page>
-          <Principles/>
-       </Page>
+       <div>
+            <Page>
+                <div className={classes.container}>
+                        <LogoHome/>
+                        <div>
+                            <Modalities title={"FRETES"}/>
+                            <Modalities title={"CARRETOS"}/>
+                            <Modalities title={"ENTREGAS EMPRESÁRIAIS"}/>
+                            <Modalities title={"MUDANÇAS"}/>
+                        </div>
+                </div>
+                <div className={classes.principles}>
+                    <Principles/>
+                </div>
+                <div className={classes.whoIAm}>
+                    <WhoIAm/>
+                </div>
+            </Page>
+       </div>
+
     );
 };
 
