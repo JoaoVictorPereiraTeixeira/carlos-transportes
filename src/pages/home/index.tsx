@@ -45,13 +45,13 @@ export const HomePage = (props: PageFormProps) => {
        <div>
             <Page>
                 <div className={classes.container}>
-                        <LogoHome/>
-                        <div>
-                            <Modalities title={"FRETES"}/>
-                            <Modalities title={"CARRETOS"}/>
-                            <Modalities title={"ENTREGAS EMPRESÁRIAIS"}/>
-                            <Modalities title={"MUDANÇAS"}/>
-                        </div>
+                    <LogoHome/>
+                    <div>
+                        <Modalities title={"FRETES"}/>
+                        <Modalities title={"CARRETOS"}/>
+                        <Modalities title={"ENTREGAS EMPRESÁRIAIS"}/>
+                        <Modalities title={"MUDANÇAS"}/>
+                    </div>
                 </div>
                 <div className={classes.principles}>
                     <Principles/>
