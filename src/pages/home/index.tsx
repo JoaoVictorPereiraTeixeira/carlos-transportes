@@ -7,6 +7,7 @@ import LogoHome from '../../components/LogoHome';
 import backgroundHome from '../../static/img/backgroundHome.png'
 import useWindowDimensions from '../../utils/responsive/index'
 import WhoIAm from '../../components/WhoIAm';
+import Feedback from '../../components/Feedback';
 
 interface PageFormProps {
     
@@ -28,6 +29,9 @@ const useStyles = makeStyles((theme : Theme) => ({
     },
     whoIAm : {
         marginTop: "280px"
+    },
+    feedback:{
+        marginTop: "150px"
     }
 }));
 
@@ -54,6 +58,9 @@ export const HomePage = (props: PageFormProps) => {
                 </div>
                 <div className={classes.whoIAm}>
                     <WhoIAm/>
+                </div>
+                <div className={classes.feedback}>
+                    <Feedback/>
                 </div>
             </Page>
        </div>
