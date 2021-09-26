@@ -9,9 +9,6 @@ const useStyles = makeStyles({
     }
 });
 
-type PageProps = {
-    
-};
 
 export const Page: React.FC = (props) => {
     const classes = useStyles();

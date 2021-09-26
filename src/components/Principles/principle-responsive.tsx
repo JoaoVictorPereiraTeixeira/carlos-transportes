@@ -1,19 +1,15 @@
 import {createStyles, makeStyles, Theme, Typography } from '@material-ui/core';
 
 type Props = {
-    title: string,
-    text: string,
-    img: string
+  title: string,
+  img: string
 };
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     principle:{
-      borderRadius: "180px",
-      background:  '#FFFFFF',
-      boxShadow: "8px 8px 32px rgba(0, 0, 0, 0.16)",
       width:"320px",
-      height: "600px",
+      height: "300px",
       margin: "20px"
     },
     principleImage:{
@@ -22,11 +18,12 @@ const useStyles = makeStyles((theme: Theme) =>
         borderRadius: "180px",
         background:  '#F5F5F5',
         marginTop: "30px",
-        height:"200px",
-        width: "200px"
+        marginLeft: "-20px",
+        height:"150px",
+        width: "150px"
     },
     img:{
-      marginLeft: "25%",
+      marginLeft: "18%",
     },
     contentPrinciple:{
         display: "flex",
@@ -47,7 +44,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 
-const Principle : React.FC<Props> = (props) => {
+const PrincipleResponsive : React.FC<Props>  = (props) => {
   const classes = useStyles();
     return (
         <div className={classes.principle}>
@@ -55,14 +52,11 @@ const Principle : React.FC<Props> = (props) => {
                 <div className={classes.principleImage}>
                   <img src={props.img} alt="Pontualidade" className={classes.img} />
                 </div>
-                
                 <h1 className={classes.h1}>{props.title}</h1>
-                <h5 className={classes.h5}>{props.text}</h5>
-
             </div>
         </div>
     );
 };
 
 
-export default Principle;
+export default PrincipleResponsive;
