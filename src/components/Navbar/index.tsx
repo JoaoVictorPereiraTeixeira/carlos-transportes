@@ -8,9 +8,7 @@ import { Menu } from './menu';
 
 
 const listRoutes: any = {
-    'trabalhosRealizados': 'Trabalhos Realizados',
-    'empresas' : 'Empresas',
-    'servicos' : 'Serviços',
+    'home' : 'Home',
     'contato' : 'Contato',
     'sobreNos' : 'Sobre nós',
     'cotacao' : 'Cotação'

@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     h1:{
      fontSize:"24px",
-     color: "#8A8A8A"
+     color: "#F5F5F5"
     }
   }),
 );

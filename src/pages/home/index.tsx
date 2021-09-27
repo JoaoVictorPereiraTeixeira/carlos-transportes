@@ -4,10 +4,15 @@ import { Box, makeStyles, Typography, Theme, Container } from '@material-ui/core
 import Principles from '../../components/Principles';
 import Modalities from '../../components/Modalities';
 import LogoHome from '../../components/LogoHome';
-import backgroundHome from '../../static/img/backgroundHome.png'
+import backgroundHomeExtraBig from '../../static/img/backgroundHome5K.jpg'
+import backgroundHomeBig from '../../static/img/backgroundHomeBig.jpg'
+import backgroundHomeMedium from '../../static/img/backgroundHomeMedium.jpg'
+import backgroundHomeSmall from '../../static/img/backgroundHomeSmall.jpg'
+
 import useWindowDimensions from '../../utils/responsive/index'
 import WhoIAm from '../../components/WhoIAm';
 import Feedback from '../../components/Feedback';
+import { isAbsolute } from 'path';
 
 interface PageFormProps {
     
@@ -19,14 +24,15 @@ const useStyles = makeStyles((theme : Theme) => ({
         marginTop:"100px"
     },
     backgroundHome:{
-        marginTop:"-10px",
-        backgroundImage: `url(${backgroundHome})`,
+        backgroundImage: `url(${backgroundHomeBig})`,
+        backgroundPosition: 'center', 
+        backgroundSize: 'cover', 
         backgroundRepeat: 'no-repeat',
-        display: "table",
-        width: "100%",
-        height: "20%",
-        padding:" 100px 0"
-
+        height:"900px",
+        display: 'flex',
+        flexDirection:"column",
+       
+         
     },
     principles:{
         marginTop:"10%"

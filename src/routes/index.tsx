@@ -38,10 +38,12 @@ const routes: myRouteProps[] = [
         exact: true,
     },
     {
-        name: 'servicos',
-        label: 'Serviços prestados',
-        path: '/servicos',
+        name: 'home',
+        label: 'Home',
+        path: '/home',
         exact: true,
+        component: HomePage
+
     },
     {
         name: 'contato',
