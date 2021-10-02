@@ -12,7 +12,6 @@ const App : React.FC = () => {
     <React.Fragment>
       <CssBaseline />
       <BrowserRouter>
-        <Navbar/>
         <Box>
           <AppRouter/>
         </Box>

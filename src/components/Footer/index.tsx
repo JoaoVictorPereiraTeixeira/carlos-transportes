@@ -16,11 +16,11 @@ const useStyles = makeStyles((theme: Theme) =>
     container:{
       display: "flex",
       justifyContent: "space-around",
-      marginTop:"250px",
       width:"100%",
       height:"250px",
       background:"#5F5F5F",
-      padding:"50px"
+      padding:"50px",
+      marginTop:"150px"
     },
     title:{
         color:"#F1F8FF",

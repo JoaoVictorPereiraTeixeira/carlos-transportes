@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme : Theme) => ({
         height:"900px",
         display: 'flex',
         flexDirection:"column",
-       
+        marginTop:"0px"
          
     },
     principles:{
@@ -48,9 +48,7 @@ const useStyles = makeStyles((theme : Theme) => ({
 
 export const HomePage = (props: PageFormProps) => {
     const classes = useStyles();
-    const {innerHeight } = window;
-    console.log(innerHeight) //TODO
-   
+       
     return (
        <div className={classes.backgroundHome}>
             <Page>
