@@ -116,7 +116,7 @@ export const ContatoPage = (props: PageFormProps) => {
                             <TextField id="outlined-basic" label="Nome *" variant="outlined" className={classes.field}/>
                             <TextField id="outlined-basic" label="Email *" variant="outlined" className={classes.field}/>
                             <TextField id="outlined-basic" label="Telefone *" variant="outlined" className={classes.field}/>
-                            <TextField id="outlined-basic" label="Empresa *" variant="outlined" className={classes.field}/>
+                            <TextField id="outlined-basic" label="Empresa (opcional)" variant="outlined" className={classes.field}/>
 
                             
                             <Button variant="contained" size="large" color="primary" className={classes.buttonSubmit}>

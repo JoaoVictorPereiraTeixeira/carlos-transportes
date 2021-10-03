@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme: Theme) =>
       marginTop:"10px"
     },
     networkContainer:{
-      marginTop:"50px"
+      marginTop:"50px",
     }
   }),
 );
@@ -53,8 +53,8 @@ const Footer = (props: Props) => {
               Visite nossas redes sociais!
             </p>
             <div className={classes.networkContainer}>
-              <img style={{marginRight:"20px"}} src={facebookLogo} alt="Facebook"/>
-              <img src={linkedInLogo} alt="LinkedIn"/>
+              <img style={{cursor: "pointer", marginRight:"12px"}} src={facebookLogo} alt="Ícone Facebook"/>
+              <img style={{cursor: "pointer"}} src={linkedInLogo} alt="Ícone LinkedIn"/>
             </div>
           </div>
 

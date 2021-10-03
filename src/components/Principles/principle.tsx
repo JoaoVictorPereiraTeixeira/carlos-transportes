@@ -14,7 +14,11 @@ const useStyles = makeStyles((theme: Theme) =>
       boxShadow: "8px 8px 32px rgba(0, 0, 0, 0.16)",
       width:"320px",
       height: "600px",
-      margin: "20px"
+      margin: "20px",
+      transition:"0.3s",
+      '&:hover': {
+        marginTop: "-20px",
+      },
     },
     principleImage:{
         display: "flex",

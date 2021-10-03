@@ -16,22 +16,6 @@ type Props = {
     
 };
 
-const useStyles = makeStyles((theme : Theme) => ({
-    toolbar: {
-        background: '#3F3F41',
-    },
-    title:{
-        flexGrow: 1,
-        textAlign:'left',
-    },
-    logo:{
-        paddingTop:4,
-        width: 130,
-        [theme.breakpoints.up('sm')] : {
-            width: 200
-        }
-    },
-}));
 
 
 export const Navbar : React.FC = (props: Props) => {

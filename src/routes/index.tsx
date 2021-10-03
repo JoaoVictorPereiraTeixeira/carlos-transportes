@@ -26,9 +26,9 @@ const routes: myRouteProps[] = [
         component: CotacaoPage
     },
     {
-        name: 'trabalhosRealizados',
-        label: 'Trabalhos Realizados',
-        path: '/trabalhos-realizados',
+        name: 'detalhesCaminhoes',
+        label: 'Detalhes dos caminhões',
+        path: '/detalhes-caminhoes',
         exact: true,
     },
     {
