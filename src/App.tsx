@@ -4,6 +4,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 import { BrowserRouter } from 'react-router-dom';
 import AppRouter  from './routes/AppRouter';
 import { Box, CssBaseline} from '@material-ui/core';
+import {ContextProvider} from './Context';
 
 const theme = createMuiTheme({
   overrides: {
@@ -21,9 +22,11 @@ const App : React.FC = () => {
       <React.Fragment>
         <CssBaseline />
         <BrowserRouter>
-          <Box>
-            <AppRouter/>
-          </Box>
+          <ContextProvider>
+            <Box>
+              <AppRouter/>
+            </Box>
+          </ContextProvider>
         </BrowserRouter>
       </React.Fragment>
     </MuiThemeProvider>

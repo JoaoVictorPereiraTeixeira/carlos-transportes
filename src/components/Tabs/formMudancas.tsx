@@ -1,4 +1,3 @@
-import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { Button, MenuItem } from '@material-ui/core';
@@ -29,21 +28,8 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function FormPropsTextFields() {
+
   const classes = useStyles();
-  let defaultItemsTransport = [
-        "Cama montada",
-        "Cama desmontada",
-        "Guarda-roupa montado",
-        "Guarda-roupa desmontado",
-        "Amário montado",
-        "Armário desmontado",
-        "Geladeira",
-        "Fogão",
-        "Mesa montada",
-        "Mesa desmontada",
-        "Sofá",
-        "Televisão"
-    ]
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
@@ -156,7 +142,7 @@ export default function FormPropsTextFields() {
         <br/>
         <br/>
 
-        <ComboItems defaultValues={defaultItemsTransport}/>
+        <ComboItems/>
         
         <Typography className={classes.buttonSubmit}>
             <Button variant="contained" size="large" color="primary" className={classes.buttonSubmit}>

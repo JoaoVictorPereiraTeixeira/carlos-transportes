@@ -1,5 +1,7 @@
 import { Button, Container, createStyles, IconButton, makeStyles, Theme, Typography } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
+import React, {useContext, useEffect, useState} from 'react';
+import {DispatchContext} from '../../Context'
 import { containerClasses } from '@mui/material';
 import {GrFormSubtract} from "react-icons/gr"
 import {IoMdAdd} from "react-icons/io"
@@ -7,7 +9,8 @@ import {IoMdAdd} from "react-icons/io"
 
 type Props = {
     item: string,
-    showText: string
+    showText: string,
+    originalText: string
 };
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -36,6 +39,28 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const TransportItem = (props: Props) => {
     const classes = useStyles();
+    const {state, dispatch} = useContext(DispatchContext)
+    const [quantity, setQuantity] = useState(0)
+
+    const add = () => {
+        setQuantity(quantity + 1)
+        dispatch({type: 'CHANGE_QUANTITY_ITEM_TRANSPORT', item: props.originalText, quantity})
+    }
+
+    const decrease = () => {
+        if(quantity > 0){
+          setQuantity(quantity - 1)
+          dispatch({type: 'CHANGE_QUANTITY_ITEM_TRANSPORT', item: props.originalText, quantity})
+        }
+    }
+
+    const handleChangeIncrease =  (event : any) => {
+        let value = Number(event.target.value)
+        if(Number.isInteger(value)){
+          setQuantity(value);
+          dispatch({type: 'CHANGE_QUANTITY_ITEM_TRANSPORT', item: props.originalText, quantity})
+        }
+    }
 
     return (
         <div className={classes.transportItem}>
@@ -43,13 +68,13 @@ const TransportItem = (props: Props) => {
             <p>{props.showText}</p>
           </div>
           <div className={classes.inputQuantity}>
-            <IconButton>
+            <IconButton onClick={decrease}>
               <GrFormSubtract/>
             </IconButton>
             
-            <TextField id="outlined-basic" variant="outlined" size="small" style={{width:"60px"}}/>
+            <TextField id="outlined-basic" variant="outlined" size="small" style={{width:"60px"}} value={quantity} onChange={handleChangeIncrease}/>
             
-            <IconButton>
+            <IconButton onClick={add}>
               <IoMdAdd/>
             </IconButton>
           </div>
