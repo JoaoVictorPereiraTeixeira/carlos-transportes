@@ -1,3 +1,4 @@
+import Button from '@mui/material/Button';
 import React from 'react';
 import SwipeableViews from 'react-swipeable-views';
 import { makeStyles, Theme, useTheme } from '@material-ui/core/styles';
@@ -10,8 +11,9 @@ import FormMudancas from './formMudancas';
 import FormFretesEmpresariais from './formFretesEmpresariais'
 import FormCarretosFretesComuns from './formCarretosFretesComuns';
 import useWindowDimensions from '../../utils/responsive/index';
-
-
+import Toastr from '../toastr/index'
+import { ToastContainer } from 'react-toastify';
+// import {NotifySuccess} from '../toastr/index'
 
 
 interface TabPanelProps {
@@ -20,6 +22,7 @@ interface TabPanelProps {
   index: any;
   value: any;
 }
+
 
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
@@ -72,6 +75,7 @@ export default function FullWidthTabs() {
 
   return (
     <div className={classes.root}>
+      <ToastContainer />    
       <AppBar position="relative" color="transparent">
         <Tabs
           value={value}
