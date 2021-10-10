@@ -47,8 +47,7 @@ export default function FormPropsTextFields() {
     const classes = useStyles();
     const {state} = useContext(DispatchContext)
     const {register, handleSubmit, control} = useForm();
-
-
+    
     const onSubmit = (formData: any) => {
         
     

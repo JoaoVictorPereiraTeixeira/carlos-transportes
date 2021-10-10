@@ -1,8 +1,11 @@
 // @flow 
-import * as React from 'react';
+import  {useContext, useState} from 'react';
 import {Button, createStyles, makeStyles, TextField, Theme } from '@material-ui/core';
-import useWindowDimensions from '../../utils/responsive/index'
+import {DispatchContext} from '../../Context'
+
 import RatingMUI from '../RatingMUI';
+import FeedbackService from '../../service/FeedbackService';
+import Toastr from '../toastr';
 
 
 type Props = {
@@ -72,23 +75,49 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 
+
 const Feedback = (props: Props) => {
-    const classes = useStyles();
-    return (
-        <div className={classes.container}>
-            <p className={classes.text}>Recebeu uma entrega? Nos conte como foi! É rápido, apenas uma pergunta :)</p>
-            <div className={classes.subContainer} >
-              <RatingMUI/>
-            </div>
-            <div className={classes.subContainer}>
-              <p className={classes.textFeedback}>Aproveite o espaço abaixo para deixar sugestões de melhoria, elogios entre outros. Todas as respostas são anônimas 😉</p> 
-              <TextField id="outlined-basic" label="Queremos sua opinão! Estamos indo bem? (opcional)" variant="outlined"  multiline rows="4" style = {{width:"100%", marginTop:"20px"}}/>
-              <Button variant="contained" size="large" color="primary" className={classes.buttonSubmit}>
-                  Enviar feedback
-              </Button>
-            </div>
-        </div>
-    );
+  const classes = useStyles();
+  const {state, dispatch} = useContext(DispatchContext)
+  
+  const sendFeedback = () => { 
+    let service = new FeedbackService()
+    if(state.feedback.avaliation !== 0){
+      dispatch({type: 'FEEDBACK_CLEAR_ALL'})
+      Toastr("WARNING","Estamos enviando seu feedback, aguarde alguns segundos, por favor")
+      service.sendFeedback(state.feedback)
+        .then(res => Toastr("SUCCESS","Feedback enviado com sucesso, muito obrigado!"))
+        .catch(error => {
+            Toastr("ERROR","Ops, algum problema aconteceu")
+            console.log(error)
+        })
+    } else {
+      Toastr("WARNING","Por favor, avalie para seguir com o feedback :)")
+    }
+
+    console.log(state.feedback)
+
+  }
+  
+  const handleChange = (e: any) => {
+    dispatch({type: 'CHANGE_FEEDBACK_DESCRIPTION', description: e.target.value})
+  }
+   
+  return (
+      <div className={classes.container}>
+          <p className={classes.text}>Recebeu uma entrega? Nos conte como foi! É rápido, apenas uma pergunta :)</p>
+          <div className={classes.subContainer} >
+            <RatingMUI/>
+          </div>
+          <div className={classes.subContainer}>
+            <p className={classes.textFeedback}>Aproveite o espaço abaixo para deixar sugestões de melhoria, elogios entre outros. Todas as respostas são anônimas 😉</p> 
+            <TextField value={state.feedback.description} onChange={handleChange} id="outlined-basic" label="Queremos sua opinão! Estamos indo bem? (opcional)" variant="outlined"  multiline rows="4" style = {{width:"100%", marginTop:"20px"}}/>
+            <Button onClick={sendFeedback} variant="contained" size="large" color="primary" className={classes.buttonSubmit}>
+                Enviar feedback
+            </Button>
+          </div>
+      </div>
+  );
 };
 
 export default Feedback

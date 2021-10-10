@@ -5,7 +5,7 @@ type Feedback = {
     description: string
 }
 
-export default class QuotationsService extends ApiService {
+export default class FeedbackService extends ApiService {
     constructor(){
         super('/feedbacks')
     }

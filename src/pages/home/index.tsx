@@ -7,6 +7,7 @@ import LogoHome from '../../components/LogoHome';
 import backgroundHomeBig from '../../static/img/backgroundHome.png'
 import WhoIAm from '../../components/WhoIAm';
 import Feedback from '../../components/Feedback';
+import { ToastContainer } from 'react-toastify';
 
 interface PageFormProps {
     
@@ -42,10 +43,12 @@ const useStyles = makeStyles((theme : Theme) => ({
 
 export const HomePage = (props: PageFormProps) => {
     const classes = useStyles();
+
        
     return (
        <div className={classes.backgroundHome}>
             <Page>
+                <ToastContainer /> 
                 <div className={classes.container}>
                     <LogoHome/>
                     <div>

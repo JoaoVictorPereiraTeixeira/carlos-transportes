@@ -57,7 +57,6 @@ export const transportItemsReducer = (state, action) => {
                 if(itemToTransport.item == action.itemToTransport){
                     itemToTransport.quantity = action.quantity
                 }
-
                 return itemToTransport
             })
         default:
