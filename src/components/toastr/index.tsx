@@ -30,12 +30,25 @@ const notifyError = (message: string) => toast.error(message, {
     progress: undefined,
 });
 
+const notifyWarning = (message: string) => toast.warning(message, {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+});
+
 
 export default function Toastr(type : string, message : string){
     // const {state} = useContext(DispatchContext)
     switch(type){
         case "SUCCESS":
             notifySuccess(message)
+            break;
+        case "WARNING":
+            notifyWarning(message)
             break;
         case "ERROR":
             notifyError(message)

@@ -51,6 +51,7 @@ export default function FormPropsTextFields() {
   const onSubmit = (formData: any) => {
     formData = handleFormData(formData)
     let service = new QuotationsService()
+    Toastr("WARNING","Estamos enviando sua cotação, aguarde alguns segundos")
     service.sendQuotation(formData)
       .then(res => Toastr("SUCCESS","Cotação enviada com sucesso!"))
       .catch(error => {
@@ -90,11 +91,25 @@ export default function FormPropsTextFields() {
           )}
         />       
   
-         <TextField {...register("requesterMainTelephone")} 
-            required id="outlined-required" 
-            label="Telefone solicitante" 
-            variant="outlined" 
-            style = {{width:"27%"}} />
+        <Controller
+          name="requesterMainTelephone"
+          control={control}
+          defaultValue=""
+          rules={{ required: 'Campo obrigatório' }}
+          render={({field: { onChange, value }, fieldState: { error } }) => (
+            <TextField {...register("requesterMainTelephone")} 
+              required={true}
+              id="outlined-required" 
+              label="Telefone principal" 
+              variant="outlined"
+              value={value}
+              onChange={onChange}
+              style = {{width:"27%"}}
+              error={!!error}
+              helperText={error ? error.message : null}
+            />
+          )}
+        /> 
 
          <TextField 
             {...register("cnpjSender")} 
@@ -102,6 +117,7 @@ export default function FormPropsTextFields() {
             label="CNPJ Remente" 
             variant="outlined" 
             style = {{width:"27%"}} />
+            
          <TextField {...register("cnpjRecipient")} id="outlined-basic" label="CNPJ Destinatário" variant="outlined" style = {{width:"31%"}} />
         
 
@@ -395,13 +411,14 @@ export default function FormPropsTextFields() {
             style = {{width:"100%"}}/>
          <br/>
 
-         <TextField 
+          <TextField 
             {...register("merchandiseObservations")} 
             id="outlined-basic" 
             label="Observações para mercadoria" 
             variant="outlined"  
             multiline rows="4" 
-            style = {{width:"100%"}}/>
+            style = {{width:"100%"}}
+          />
             
          <br/>
          <br/>

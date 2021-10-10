@@ -40,26 +40,26 @@ const useStyles = makeStyles((theme: Theme) =>
 const TransportItem = (props: Props) => {
     const classes = useStyles();
     const {state, dispatch} = useContext(DispatchContext)
-    const [quantity, setQuantity] = useState(0)
+    let [quantity, setQuantity] = useState<number>(0)
 
     const add = () => {
-        setQuantity(quantity + 1)
-        dispatch({type: 'CHANGE_QUANTITY_ITEM_TRANSPORT', item: props.originalText, quantity})
+      setQuantity(quantity + 1)
+      dispatch({type: 'CHANGE_QUANTITY_ITEM_TRANSPORT', itemToTransport: props.originalText, quantity: quantity + 1})
     }
 
     const decrease = () => {
-        if(quantity > 0){
-          setQuantity(quantity - 1)
-          dispatch({type: 'CHANGE_QUANTITY_ITEM_TRANSPORT', item: props.originalText, quantity})
-        }
+      if(quantity > 0){
+        setQuantity(quantity - 1)
+        dispatch({type: 'CHANGE_QUANTITY_ITEM_TRANSPORT', itemToTransport: props.originalText,  quantity: quantity - 1})
+      }
     }
 
     const handleChangeIncrease =  (event : any) => {
-        let value = Number(event.target.value)
-        if(Number.isInteger(value)){
-          setQuantity(value);
-          dispatch({type: 'CHANGE_QUANTITY_ITEM_TRANSPORT', item: props.originalText, quantity})
-        }
+      let value = Number(event.target.value)
+      if(Number.isInteger(value)){
+        setQuantity(value);
+        dispatch({type: 'CHANGE_QUANTITY_ITEM_TRANSPORT', item: props.originalText, quantity})
+      }
     }
 
     return (

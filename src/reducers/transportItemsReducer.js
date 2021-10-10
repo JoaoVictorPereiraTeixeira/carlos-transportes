@@ -56,7 +56,7 @@ export const transportItemsReducer = (state, action) => {
             return state.map(itemToTransport => {
                 if(itemToTransport.item == action.itemToTransport){
                     itemToTransport.quantity = action.quantity
-                } 
+                }
 
                 return itemToTransport
             })
