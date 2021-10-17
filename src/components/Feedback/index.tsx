@@ -80,7 +80,7 @@ const Feedback = (props: Props) => {
   const classes = useStyles();
   const {state, dispatch} = useContext(DispatchContext)
   
-  const sendFeedback = () => { 
+  const sendFeedback = () => {
     let service = new FeedbackService()
     if(state.feedback.avaliation !== 0){
       dispatch({type: 'FEEDBACK_CLEAR_ALL'})

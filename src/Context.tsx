@@ -14,6 +14,7 @@ export function ContextProvider(props: any){
     const [state, dispatch] = useCombinedReducers({
         itemsToTransport: useReducer(transportItemsReducer, transportItemsInitial),
         feedback: useReducer(feedbackReducer, feedbackInitial)
+        // destinyAddress: useReducer(destinyAddressReducer, destinyAddressInital)
     });
 
     return (

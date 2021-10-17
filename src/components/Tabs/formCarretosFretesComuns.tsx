@@ -1,4 +1,4 @@
-import React from 'react';
+import {useState}  from 'react';
 import TextField from '@material-ui/core/TextField';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { Button, MenuItem } from '@material-ui/core';
@@ -12,6 +12,8 @@ import {
     MuiPickersUtilsProvider
   } from '@material-ui/pickers';
 import QuotationsService from '../../service/QuotationsService';
+import CorreiosService from '../../service/CorreiosService';
+import { CommonsFields } from './commonsFields';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -31,24 +33,44 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-function onSubmit(formData: any){
-  formData.quotationType = "FRETES_COMUNS"
-  formData.needHelper = formData.needHelper == "true"
-  
-  Toastr("WARNING","Estamos enviando sua cotação, aguarde alguns segundos")
-  
-  let service = new QuotationsService()
-  service.sendQuotation(formData)
-    .then(res => Toastr("SUCCESS","Cotação enviada com sucesso!"))
-    .catch(error => {
-        Toastr("ERROR","Ops, algum problema aconteceu")
-        console.log(error)
-    })
-}
+
+
 
 export default function FormPropsTextFields() {
   const classes = useStyles();
-  const {register, handleSubmit, control} = useForm();
+  const {register, handleSubmit, setValue, control} = useForm();
+
+  function resetValues(){
+    setValue("destinyAddress", "")
+    setValue("destinyCep", "")
+    setValue("destinyCity", "")
+    setValue("destinyDistrict", "")
+    setValue("destinyNumber", "")
+    setValue("originAddress", "")
+    setValue("originCep", "")
+    setValue("originCity", "")
+    setValue("originDistrict", "")
+    setValue("originNumber", "")
+    setValue("requesterName", "")
+    setValue("requesterMainTelephone", "")
+    setValue("requesterSecondaryTelephone", "")
+    setValue("dateToCollect", "")
+    setValue("needHelper", "")
+  }
+
+  function onSubmit(formData: any){
+    formData.quotationType = "FRETES_COMUNS"
+    formData.needHelper = formData.needHelper == "true"
+    Toastr("WARNING","Estamos enviando sua cotação, aguarde alguns segundos")
+    resetValues()
+    let service = new QuotationsService()
+    service.sendQuotation(formData)
+      .then(res => Toastr("SUCCESS","Cotação enviada com sucesso!"))
+      .catch(error => {
+          Toastr("ERROR","Ops, algum problema aconteceu")
+          console.log(error)
+      })
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={classes.root} noValidate autoComplete="off">
@@ -134,224 +156,42 @@ export default function FormPropsTextFields() {
         <br/>
         <br/>
 
-        <Controller
-          name="originCep"
-          control={control}
-          defaultValue=""
-          rules={{ required: 'Campo obrigatório' }}
-          render={({field: { onChange, value }, fieldState: { error } }) => (
-            <TextField 
-              {...register("originCep")} 
-              required 
-              error={!!error}
-              helperText={error ? error.message : null}
-              id="outlined-required" 
-              label="CEP origem"
-              value={value}
-              onChange={onChange} 
-              variant="outlined" 
-              style = {{width:"31%"}} />
-          )}
-        />
-
-        <Controller
-          name="originCity"
-          control={control}
-          defaultValue=""
-          rules={{ required: 'Campo obrigatório' }}
-          render={({field: { onChange, value }, fieldState: { error } }) => (
-            <TextField 
-              {...register("originCity")} 
-              required
-              error={!!error}
-              helperText={error ? error.message : null}
-              id="outlined-required"
-              value={value}
-              onChange={onChange}
-              label="Cidade de origem" 
-              variant="outlined"/>
-          )}
-        />
-
-        <Controller
-          name="originAddress"
-          control={control}
-          defaultValue=""
-          rules={{ required: 'Campo obrigatório' }}
-          render={({field: { onChange, value }, fieldState: { error } }) => (
-            <TextField 
-              {...register("originAddress")} 
-              required
-              error={!!error}
-              helperText={error ? error.message : null}
-              id="outlined-required"
-              label="Endereço de origem"
-              value={value}
-              onChange={onChange}
-              variant="outlined" />
-          )}
-        />
-
-        <Controller
-          name="originDistrict"
-          control={control}
-          defaultValue=""
-          rules={{ required: 'Campo obrigatório' }}
-          render={({field: { onChange, value }, fieldState: { error } }) => (
-          <TextField 
-            {...register("originDistrict")} 
-            required
-            error={!!error}
-            helperText={error ? error.message : null}
-            id="outlined-required" 
-            label="Bairro de origem"
-            value={value}
-            onChange={onChange}
-            variant="outlined" />
-          )}
-        />     
-
-        <Controller
-          name="originNumber"
-          control={control}
-          defaultValue=""
-          rules={{ required: 'Campo obrigatório' }}
-          render={({field: { onChange, value }, fieldState: { error } }) => (
-            <TextField 
-              {...register("originNumber")} 
-              required
-              error={!!error}
-              helperText={error ? error.message : null}
-              id="outlined-required" 
-              label="Número de origem"
-              value={value}
-              onChange={onChange}
-              variant="outlined"/>
-          )}
-        />
+        <CommonsFields control={control} register={register} setValue={setValue}/> 
 
          <br/>
          <br/>
 
-         <Controller
-          name="destinyCep"
-          control={control}
-          defaultValue=""
-          rules={{ required: 'Campo obrigatório' }}
-          render={({field: { onChange, value }, fieldState: { error } }) => (
-            <TextField 
-              {...register("destinyCep")}  
-              required 
-              error={!!error}
-              helperText={error ? error.message : null}
-              id="outlined-required" 
-              label="CEP destino" 
-              variant="outlined"
-              value={value}
-              onChange={onChange}  
-              style={{width:"31%"}} />
-          )}
-        />  
-
         <Controller
-          name="destinyCity"
+          name="needHelper"
           control={control}
           defaultValue=""
           rules={{ required: 'Campo obrigatório' }}
           render={({field: { onChange, value }, fieldState: { error } }) => (
-            <TextField 
-              {...register("destinyCity")} 
+          <TextField
+              {...register("needHelper")}
+              select
+              defaultValue= {[]}
               required
+              label="Precisa de ajudante?"
+              margin={'normal'}
+              variant={'outlined'}
+              fullWidth
               error={!!error}
               helperText={error ? error.message : null}
-              id="outlined-required"
-              label="Cidade de destino"
               value={value}
               onChange={onChange}
-              variant="outlined" />
-          )}
-        />
-
-        <Controller
-          name="destinyAddress"
-          control={control}
-          defaultValue=""
-          rules={{ required: 'Campo obrigatório' }}
-          render={({field: { onChange, value }, fieldState: { error } }) => (
-            <TextField 
-              {...register("destinyAddress")} 
-              required
-              error={!!error}
-              helperText={error ? error.message : null}
-              id="outlined-required" 
-              label="Endereço de destino"
-              value={value}
-              onChange={onChange} 
-              variant="outlined" />
-          )}
-        /> 
-
-        <Controller
-          name="destinyDistrict"
-          control={control}
-          defaultValue=""
-          rules={{ required: 'Campo obrigatório' }}
-          render={({field: { onChange, value }, fieldState: { error } }) => (
-            <TextField 
-              {...register("destinyDistrict")} 
-              required
-              error={!!error}
-              helperText={error ? error.message : null}
-              id="outlined-required" 
-              label="Bairro de destino"
-              value={value}
-              onChange={onChange}
-              variant="outlined" />
-          )}
-        />       
-
-        <Controller
-          name="destinyNumber"
-          control={control}
-          defaultValue=""
-          rules={{ required: 'Campo obrigatório' }}
-          render={({field: { onChange, value }, fieldState: { error } }) => (
-            <TextField {
-              ...register("destinyNumber")} 
-              required
-              error={!!error}
-              helperText={error ? error.message : null}
-              id="outlined-required" 
-              label="Número de destino"
-              value={value}
-              onChange={onChange}
-              variant="outlined" />
-          )}
-        /> 
-        
-         <br/>
-         <br/>
-
-         <TextField
-            select
-            defaultValue= {[]}
-            label="Precisa de ajudante?"
-            margin={'normal'}
-            variant={'outlined'}
-            fullWidth
-            required
-            {...register("needHelper")}
-         >
-            <MenuItem value="" disabled>
-                <em>Selecione sim ou não</em>
-            </MenuItem>
-            <MenuItem value="true">
-                <em>Sim</em>
-            </MenuItem>
-            <MenuItem value="false">
-                <em>Não</em>
-            </MenuItem>
-        </TextField>
+          >
+              <MenuItem value="" disabled>
+                  <em>Selecione sim ou não</em>
+              </MenuItem>
+              <MenuItem value="true">
+                  <em>Sim</em>
+              </MenuItem>
+              <MenuItem value="false">
+                  <em>Não</em>
+              </MenuItem>
+          </TextField>
+        )}/>
 
          <TextField {...register("merchandiseObservations")}  id="outlined-basic" label="Observações para mercadoria" variant="outlined" 
             multiline rows="4" style = {{width:"100%"}}/>
