@@ -11,7 +11,8 @@ import {IoMdAdd} from "react-icons/io"
 type Props = {
     item: string,
     showText: string,
-    originalText: string
+    originalText: string,
+    quantity: number
 };
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -47,27 +48,26 @@ const TransportItem = (props: Props) => {
     let [quantity, setQuantity] = useState<number>(0)
 
     const add = () => {
-      setQuantity(quantity + 1)
-      dispatch({type: 'CHANGE_QUANTITY_ITEM_TRANSPORT', itemToTransport: props.originalText, quantity: quantity + 1})
+      // setQuantity(quantity + 1)
+      dispatch({type: 'CHANGE_QUANTITY_ITEM_TRANSPORT', itemToTransport: props.originalText, quantity: props.quantity + 1})
     }
 
     const decrease = () => {
-      if(quantity > 0){
-        setQuantity(quantity - 1)
-        dispatch({type: 'CHANGE_QUANTITY_ITEM_TRANSPORT', itemToTransport: props.originalText,  quantity: quantity - 1})
+      if(props.quantity > 0){
+        // setQuantity(quantity - 1)
+        dispatch({type: 'CHANGE_QUANTITY_ITEM_TRANSPORT', itemToTransport: props.originalText,  quantity: props.quantity - 1})
       }
     }
 
     const handleChangeIncrease =  (event : any) => {
       let value = Number(event.target.value)
       if(Number.isInteger(value)){
-        setQuantity(value);
-        dispatch({type: 'CHANGE_QUANTITY_ITEM_TRANSPORT', itemToTransport: props.originalText, quantity})
+        dispatch({type: 'CHANGE_QUANTITY_ITEM_TRANSPORT', itemToTransport: props.originalText, quantity: value})
       }
     }
 
     const handleDeleteAction =  (event : any) => {
-        dispatch({type: 'DELETE_ITEM_TRANSPORT', itemToDelete: props.originalText, quantity})
+        dispatch({type: 'DELETE_ITEM_TRANSPORT', itemToDelete: props.originalText})
     }
 
     return (
@@ -83,7 +83,7 @@ const TransportItem = (props: Props) => {
               <GrFormSubtract/>
             </IconButton>
             
-            <TextField id="outlined-basic" variant="outlined" size="small" style={{width:"60px"}} value={quantity} onChange={handleChangeIncrease}/>
+            <TextField id="outlined-basic" variant="outlined" size="small" style={{width:"60px"}} value={props.quantity} onChange={handleChangeIncrease}/>
             
             <IconButton onClick={add}>
               <IoMdAdd/>

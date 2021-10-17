@@ -52,7 +52,7 @@ const TransportItems = (props: Props) => {
 
                             return (
                                 <Grid item xs={windowDimensions.width > 1200 ? 4 : 12}>
-                                    <Item item={itemToTransport.item} originalText={itemToTransport.item} showText={showText} />
+                                    <Item item={itemToTransport.item} quantity={itemToTransport.quantity} originalText={itemToTransport.item} showText={showText} />
                                 </Grid>
                             )
                         })
