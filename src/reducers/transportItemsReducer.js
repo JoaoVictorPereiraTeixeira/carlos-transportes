@@ -58,7 +58,9 @@ export const transportItemsReducer = (state, action) => {
                     itemToTransport.quantity = action.quantity
                 }
                 return itemToTransport
-            })
+            })  
+        case 'DELETE_ITEM_TRANSPORT':
+            return state.filter(itemToTransport => {return itemToTransport.item != action.itemToDelete})
         default:
             return state;
     }

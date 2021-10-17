@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import React, {useContext, useEffect, useState} from 'react';
 import {DispatchContext} from '../../Context'
 import { containerClasses } from '@mui/material';
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import {GrFormSubtract} from "react-icons/gr"
 import {IoMdAdd} from "react-icons/io"
 
@@ -23,8 +24,11 @@ const useStyles = makeStyles((theme: Theme) =>
       borderRadius:"4px",
       padding:"10px",
       height: "70px",
+      "&:hover": {
+        background: "#E4E2E2",
+      }
     },
-    inputQuantity:{
+    containerQuantity:{
       display: "flex",
       alignItems: "center",
       marginLeft: "5%"
@@ -58,16 +62,23 @@ const TransportItem = (props: Props) => {
       let value = Number(event.target.value)
       if(Number.isInteger(value)){
         setQuantity(value);
-        dispatch({type: 'CHANGE_QUANTITY_ITEM_TRANSPORT', item: props.originalText, quantity})
+        dispatch({type: 'CHANGE_QUANTITY_ITEM_TRANSPORT', itemToTransport: props.originalText, quantity})
       }
+    }
+
+    const handleDeleteAction =  (event : any) => {
+        dispatch({type: 'DELETE_ITEM_TRANSPORT', itemToDelete: props.originalText, quantity})
     }
 
     return (
         <div className={classes.transportItem}>
+           <IconButton onClick={handleDeleteAction}>
+            <DeleteOutlineOutlinedIcon/>
+          </IconButton>
           <div className={classes.item}>
             <p>{props.showText}</p>
           </div>
-          <div className={classes.inputQuantity}>
+          <div className={classes.containerQuantity}>
             <IconButton onClick={decrease}>
               <GrFormSubtract/>
             </IconButton>

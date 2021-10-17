@@ -18,8 +18,6 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-
-
 export default function AdditionMenu(props: Props) {
     const classes = useStyles();
     let windowDimensions = useWindowDimensions();
