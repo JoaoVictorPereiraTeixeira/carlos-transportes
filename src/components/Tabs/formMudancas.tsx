@@ -1,10 +1,6 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
-import {useState} from 'react';
 import {useContext} from 'react';
-
-import CustomField from '../Fields/TextFields'
-
 import {DispatchContext} from '../../Context'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { Button, MenuItem } from '@material-ui/core';
@@ -16,11 +12,8 @@ import {
   MuiPickersUtilsProvider
 } from '@material-ui/pickers';
 import { ComboItems } from '../ComboItems';
-import { Alert } from '@mui/material';
 import QuotationsService from '../../service/QuotationsService';
-import CorreiosService from '../../service/CorreiosService';
 import { CommonsFields } from './commonsFields';
-
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -65,14 +58,13 @@ export default function FormPropsTextFields() {
     setValue("needHelper", "")
   }
   
-
-  const {register, handleSubmit, control, setValue, getValues} = useForm();
+  const {register, handleSubmit, control, setValue} = useForm();
   
   const onSubmit = (formData: any) => {
       formData.itemsTransport = state.itemsToTransport
       formData.quotationType = "MUDANCAS"
-      formData.needHelper = formData.needHelper == "true"
-      formData.hasElevator = formData.hasElevator == "true"   
+      formData.needHelper = formData.needHelper === "true"
+      formData.hasElevator = formData.hasElevator === "true"   
       console.log(formData) 
       let service = new QuotationsService()
       Toastr("WARNING","Estamos enviando sua cotação, aguarde alguns segundos")

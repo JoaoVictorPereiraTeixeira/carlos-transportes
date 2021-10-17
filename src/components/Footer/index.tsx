@@ -1,11 +1,10 @@
 // @flow 
 import * as React from 'react';
-import {createStyles, makeStyles, TextField, Theme } from '@material-ui/core';
+import {createStyles, makeStyles, Theme } from '@material-ui/core';
 import facebookLogo from '../../static/img/facebookLogo.png'
 import linkedInLogo from '../../static/img/linkedInLogo.png'
 import iconPhone from '../../static/img/iconPhone.png'
 import iconComment from '../../static/img/iconComment.png'
-
 
 type Props = {
     
@@ -42,7 +41,6 @@ const useStyles = makeStyles((theme: Theme) =>
     }
   }),
 );
-
 
 const Footer = (props: Props) => {
     const classes = useStyles();

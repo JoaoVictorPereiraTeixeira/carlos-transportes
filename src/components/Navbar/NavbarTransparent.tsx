@@ -1,8 +1,7 @@
-import { AppBar, Button, makeStyles, Toolbar, Typography, Theme, IconButton, Icon, styled} from '@material-ui/core';
+import { Button, makeStyles, Theme, styled} from '@material-ui/core';
 import useWindowDimensions from '../../utils/responsive/index'
 import { ButtonProps } from '@mui/material/Button';
 import routes, { myRouteProps } from '../../routes/index'
-import logo from '../../static/img/logo.png'
 import { Link } from 'react-router-dom';
 import { Menu } from './menu';
 import { yellow, grey } from '@mui/material/colors';
@@ -14,7 +13,6 @@ const listRoutes: any = {
     'detalhesCaminhoes' : 'Detalhes dos caminhoes',
     'cotacao' : 'Cotação'
 }
-
 
 type Props = {
     
@@ -56,7 +54,7 @@ export const NavbarTransparent = (props: Props) => {
                             Object.keys(listRoutes).map(
                                 (routeName, key) => {
                                     const route = menuRoutes.find(route => route.name === routeName) as myRouteProps;
-                                    let button = routeName == "cotacao" ?
+                                    let button = routeName === "cotacao" ?
                                     (
                                         <Link style={{textDecoration:"none", color:"#ffffff "}} to={route.path as string}>
                                             <CotacaoButton key={key} variant="contained">{listRoutes[routeName]}</CotacaoButton>

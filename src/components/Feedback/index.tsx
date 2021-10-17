@@ -1,12 +1,11 @@
 // @flow 
-import  {useContext, useState} from 'react';
+import  {useContext} from 'react';
 import {Button, createStyles, makeStyles, TextField, Theme } from '@material-ui/core';
 import {DispatchContext} from '../../Context'
 
 import RatingMUI from '../RatingMUI';
 import FeedbackService from '../../service/FeedbackService';
 import Toastr from '../toastr';
-
 
 type Props = {
     
@@ -73,8 +72,6 @@ const useStyles = makeStyles((theme: Theme) =>
     }
   }),
 );
-
-
 
 const Feedback = (props: Props) => {
   const classes = useStyles();

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { Button, InputAdornment, InputLabel, MenuItem } from '@material-ui/core';
+import { Button, InputAdornment, MenuItem } from '@material-ui/core';
 import { useForm, Controller } from "react-hook-form";
 import DateFnsUtils from '@date-io/date-fns';
 import { Typography } from '@material-ui/core';
@@ -11,9 +11,7 @@ import {
     MuiPickersUtilsProvider
   } from '@material-ui/pickers';
 
-import { OutlinedInput } from '@material-ui/core';
 import QuotationsService from '../../service/QuotationsService';
-import CorreiosService from '../../service/CorreiosService';
 import { CommonsFields } from './commonsFields';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -39,12 +37,11 @@ const useStyles = makeStyles((theme: Theme) =>
 
 function handleFormData(formData: any){
   formData.quotationType = "FRETES_EMPRESARIAIS"
-  formData.paidAtOrigin = formData.paidAtOrigin == "true"
+  formData.paidAtOrigin = formData.paidAtOrigin === "true"
   formData.weight = Number(formData.weight.replace(',','.'))
   formData.quantityItems = Number(formData.quantityItems)
   return formData
 }
-
 
 export default function FormPropsTextFields() {
   const classes = useStyles();
@@ -80,7 +77,6 @@ export default function FormPropsTextFields() {
     setValue("dateToCollect", "")
     setValue("needHelper", "")
   }
-
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={classes.root} noValidate autoComplete="off">

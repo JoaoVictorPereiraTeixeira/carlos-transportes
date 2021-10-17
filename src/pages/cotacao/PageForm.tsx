@@ -23,7 +23,6 @@ const useStyles = makeStyles((theme : Theme) => ({
     }
 }));
 
-
 export const PageForm = (props: PageFormProps) => {
     const classes = useStyles();
     let windowDimensions = useWindowDimensions();

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import CotacaoPage from '../pages/cotacao/PageForm';
 import HomePage from '../pages/home/index'
 import {RouteProps} from 'react-router-dom';

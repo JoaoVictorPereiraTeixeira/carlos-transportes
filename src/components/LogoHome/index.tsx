@@ -1,6 +1,5 @@
 // @flow 
-import { Box } from '@mui/system';
-import {Container, createStyles, makeStyles, Theme, Typography } from '@material-ui/core';
+import {createStyles, makeStyles, Theme } from '@material-ui/core';
 import useWindowDimensions from '../../utils/responsive/index'
 import logoHome from '../../static/img/logoHome.png'
 
@@ -21,7 +20,6 @@ const useStyles = makeStyles((theme: Theme) =>
     }
   }),
 );
-
 
 const LogoHome = (props: Props) => {
     let windowDimensions = useWindowDimensions();

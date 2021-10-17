@@ -1,9 +1,8 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {DispatchContext} from '../../Context'
-import { Button, createStyles, makeStyles, Theme, Typography } from '@material-ui/core';
+import { Button, createStyles, makeStyles, Theme } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import useWindowDimensions from '../../utils/responsive/index'
-
 
 type Props = {
     
@@ -22,7 +21,7 @@ export default function AdditionMenu(props: Props) {
     const classes = useStyles();
     let windowDimensions = useWindowDimensions();
 
-    const {state, dispatch} = useContext(DispatchContext)
+    const {dispatch} = useContext(DispatchContext)
     const [itemToTransport, setItemToTransport] = useState('')
 
     const handleChange = (event : any) => {

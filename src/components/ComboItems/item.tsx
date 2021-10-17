@@ -1,12 +1,10 @@
-import { Button, Container, createStyles, IconButton, makeStyles, Theme, Typography } from '@material-ui/core';
+import {createStyles, IconButton, makeStyles, Theme } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
-import React, {useContext, useEffect, useState} from 'react';
+import  {useContext} from 'react';
 import {DispatchContext} from '../../Context'
-import { containerClasses } from '@mui/material';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import {GrFormSubtract} from "react-icons/gr"
 import {IoMdAdd} from "react-icons/io"
-
 
 type Props = {
     item: string,
@@ -40,12 +38,9 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-
-
 const TransportItem = (props: Props) => {
     const classes = useStyles();
-    const {state, dispatch} = useContext(DispatchContext)
-    let [quantity, setQuantity] = useState<number>(0)
+    const {dispatch} = useContext(DispatchContext)
 
     const add = () => {
       // setQuantity(quantity + 1)

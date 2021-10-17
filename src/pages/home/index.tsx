@@ -1,6 +1,6 @@
 
 import { Page } from '../../components/Page';
-import { Box, makeStyles, Typography, Theme, Container } from '@material-ui/core';
+import {makeStyles, Theme } from '@material-ui/core';
 import Principles from '../../components/Principles';
 import Modalities from '../../components/Modalities';
 import LogoHome from '../../components/LogoHome';

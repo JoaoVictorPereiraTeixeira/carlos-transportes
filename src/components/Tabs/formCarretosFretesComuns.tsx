@@ -1,4 +1,3 @@
-import {useState}  from 'react';
 import TextField from '@material-ui/core/TextField';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { Button, MenuItem } from '@material-ui/core';
@@ -6,13 +5,10 @@ import { Typography } from '@material-ui/core';
 import DateFnsUtils from '@date-io/date-fns';
 import { useForm, Controller } from 'react-hook-form';
 import Toastr from '../toastr/index';
-
-
 import {
     MuiPickersUtilsProvider
   } from '@material-ui/pickers';
 import QuotationsService from '../../service/QuotationsService';
-import CorreiosService from '../../service/CorreiosService';
 import { CommonsFields } from './commonsFields';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -32,9 +28,6 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }),
 );
-
-
-
 
 export default function FormPropsTextFields() {
   const classes = useStyles();
@@ -60,7 +53,7 @@ export default function FormPropsTextFields() {
 
   function onSubmit(formData: any){
     formData.quotationType = "FRETES_COMUNS"
-    formData.needHelper = formData.needHelper == "true"
+    formData.needHelper = formData.needHelper === "true"
     Toastr("WARNING","Estamos enviando sua cotação, aguarde alguns segundos")
     resetValues()
     let service = new QuotationsService()

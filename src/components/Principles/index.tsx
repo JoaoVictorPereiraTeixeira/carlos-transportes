@@ -1,6 +1,4 @@
-// @flow 
-import { Box } from '@mui/system';
-import {Container, createStyles, makeStyles, Theme } from '@material-ui/core';
+import {createStyles, makeStyles, Theme } from '@material-ui/core';
 import useWindowDimensions from '../../utils/responsive/index'
 import Principle from './principle';
 import PrincipleResponsive from './principle-responsive';
@@ -21,8 +19,6 @@ const useStyles = makeStyles((theme: Theme) =>
     }
   }),
 );
-
-
 
 const Principles = (props: Props) => {
     let windowDimensions = useWindowDimensions();

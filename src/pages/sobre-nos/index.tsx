@@ -8,7 +8,6 @@ interface PageFormProps {
     
 };
 
-
 const useStyles = makeStyles((theme : Theme) => ({
     imagesRight:{
         marginTop:"100px",

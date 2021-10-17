@@ -1,4 +1,4 @@
-import {createStyles, makeStyles, Theme, Typography } from '@material-ui/core';
+import {createStyles, makeStyles, Theme } from '@material-ui/core';
 
 type Props = {
   title: string,
@@ -38,7 +38,6 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-
 const PrincipleResponsive : React.FC<Props>  = (props) => {
   const classes = useStyles();
     return (
@@ -52,6 +51,5 @@ const PrincipleResponsive : React.FC<Props>  = (props) => {
         </div>
     );
 };
-
 
 export default PrincipleResponsive;

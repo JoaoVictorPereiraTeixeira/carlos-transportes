@@ -2,15 +2,11 @@ import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
 import StarIcon from '@mui/icons-material/Star';
 import {DispatchContext} from '../../Context'
-import React, {useContext, useEffect, useState} from 'react';
-
-import {createStyles, makeStyles, Theme } from '@material-ui/core';
-
+import React, {useContext, useState} from 'react';
 
 type Props = {
     
 };
-
 
 const labels: { [index: string]: string } = {
   1: 'Péssima',

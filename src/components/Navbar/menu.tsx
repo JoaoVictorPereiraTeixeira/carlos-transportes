@@ -4,12 +4,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
 import routes, { myRouteProps } from '../../routes/index';
 
-
 type Props = {
     itemsToShow : any
 }
-
-
 
 export const Menu = (props: Props) => {
     const menuRoutes = routes.filter(route => Object.keys(props.itemsToShow).includes(route.name))

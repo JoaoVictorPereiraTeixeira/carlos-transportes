@@ -28,7 +28,6 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-
 const Modalities = (props: Props) => {
     const classes = useStyles();
     return (

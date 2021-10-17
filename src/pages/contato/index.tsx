@@ -10,7 +10,6 @@ interface PageFormProps {
     
 };
 
-
 const useStyles = makeStyles((theme : Theme) => ({
     backgroundContact:{
         backgroundImage: `url(${backgroundContact})`,

@@ -1,9 +1,5 @@
-// @flow 
 import {createStyles, makeStyles, Theme } from '@material-ui/core';
 import whoIAm from '../../static/img/whoIAm.png'
-
-import useWindowDimensions from '../../utils/responsive/index'
-
 
 type Props = {
     
@@ -52,8 +48,6 @@ const useStyles = makeStyles((theme: Theme) =>
     }
   }),
 );
-
-
 
 const WhoIAm = (props: Props) => {
     const classes = useStyles();

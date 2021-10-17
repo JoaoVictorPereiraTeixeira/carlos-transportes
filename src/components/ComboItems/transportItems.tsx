@@ -1,5 +1,5 @@
-import { Button, Container, createStyles, makeStyles, Theme, Typography } from '@material-ui/core';
-import React, {useContext, useEffect, useState} from 'react';
+import { createStyles, makeStyles, Theme } from '@material-ui/core';
+import {useContext} from 'react';
 import {DispatchContext} from '../../Context'
 import useWindowDimensions from '../../utils/responsive/index'
 import Box from '@mui/material/Box';
@@ -31,8 +31,6 @@ const useStyles = makeStyles((theme: Theme) =>
     }
   }),
 );
-
-
 
 const TransportItems = (props: Props) => {
     const {state} = useContext(DispatchContext)
