@@ -12,7 +12,7 @@ export const initalState = [
         quantity: 0
     },
     {
-        item: "Amário montado",
+        item: "Armário montado",
         quantity: 0
     },
     {

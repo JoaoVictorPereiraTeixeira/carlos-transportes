@@ -46,7 +46,13 @@ const TransportItems = (props: Props) => {
                 state.itemsToTransport.length > 0 ? 
                     (
                         state.itemsToTransport.map((itemToTransport: ItemToTransport) =>  {
-                            let showText = itemToTransport.item.length >= 40 ? itemToTransport.item.substring(0,40) + "..." : itemToTransport.item
+                            let maxLength = 0
+                            if(windowDimensions.width > 700){
+                                maxLength = 40
+                            } else {
+                                maxLength = 12
+                            }
+                            let showText = itemToTransport.item.length > maxLength ? itemToTransport.item.substring(0,40) + "..." : itemToTransport.item
 
                             return (
                                 <Grid item xs={windowDimensions.width > 1200 ? 4 : 12}>

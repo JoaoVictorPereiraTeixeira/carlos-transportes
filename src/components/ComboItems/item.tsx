@@ -19,11 +19,14 @@ const useStyles = makeStyles((theme: Theme) =>
     transportItem:{
       display: "flex",
       alignItems: "center",
-      width: "100%",
+      width: "115%",
+      marginLeft: "-20px",
+
       background: "#F5F5F5",
       borderRadius:"4px",
       [theme.breakpoints.up('sm')] : {
         padding:"10px",
+        width: "100%"
       },
       height: "70px",
       "&:hover": {
@@ -35,7 +38,8 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItems: "center"
     },
     item:{
-      fontSize:"15px"
+      fontSize:"15px",
+      flexGrow: 1
     }
   }),
 );
@@ -71,9 +75,11 @@ const TransportItem = (props: Props) => {
            <IconButton onClick={handleDeleteAction}>
             <DeleteOutlineOutlinedIcon/>
           </IconButton>
-          <div className={classes.item} style={{width:`${windowDimensions.width > 400 ? "100%" : "40px"}`}}>
+          
+          <div className={classes.item} style={{width:`${windowDimensions.width > 400 ? "100%" : "12vw"}`}}>
             <p>{props.showText}</p>
           </div>
+
           <div className={classes.containerQuantity} style={{marginLeft:`${windowDimensions.width > 600 ? "" : "30px"}`}}>
             <IconButton onClick={decrease}>
               <GrFormSubtract/>
