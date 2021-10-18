@@ -12,7 +12,6 @@ interface PageFormProps {
 
 const useStyles = makeStyles((theme : Theme) => ({
     logo:{
-        paddingTop:4,
         width: 120
     },
     tabTruck:{
@@ -20,6 +19,9 @@ const useStyles = makeStyles((theme : Theme) => ({
       position:'relative',
       top:65,
       left: 20
+    },
+    tab:{
+        marginTop:"50px"
     }
 }));
 
@@ -28,7 +30,7 @@ export const PageForm = (props: PageFormProps) => {
     let windowDimensions = useWindowDimensions();
     return (
        <Page>
-           <Box>
+           <Box className={classes.tab}>
                 {windowDimensions.width > 780 ? 
                 (
                     <Typography align="right" className={classes.tabTruck}>
