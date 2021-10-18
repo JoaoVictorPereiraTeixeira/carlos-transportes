@@ -1,4 +1,4 @@
-const {path} = require('path')
+const {resolve} = require('path')
 const express = require('express')
 
 
@@ -13,10 +13,9 @@ app.use('/',
     )
 )
 
-
 app
     .listen(process.env.PORT || 3000, (err ) => {
         if(err){ return console.log(err)}
 
-        console.log('Tudo funcionando')
+        console.log('Server OK')
     })
