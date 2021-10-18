@@ -5,6 +5,7 @@ import { Typography } from '@material-ui/core';
 import DateFnsUtils from '@date-io/date-fns';
 import { useForm, Controller } from 'react-hook-form';
 import Toastr from '../toastr/index';
+import useWindowDimensions from '../../utils/responsive/index'
 import {
     MuiPickersUtilsProvider
   } from '@material-ui/pickers';
@@ -32,6 +33,7 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function FormPropsTextFields() {
   const classes = useStyles();
   const {register, handleSubmit, setValue, control} = useForm();
+  let windowDimensions = useWindowDimensions();
 
   function resetValues(){
     setValue("destinyAddress", "")
@@ -87,7 +89,7 @@ export default function FormPropsTextFields() {
               variant="outlined"
               value={value}
               onChange={onChange}
-              style = {{width:"31%"}}
+              style = {{width: `${windowDimensions.width > 700 ? "31%": "100%"}`}}
               error={!!error}
               helperText={error ? error.message : null}
             />
@@ -108,18 +110,20 @@ export default function FormPropsTextFields() {
               variant="outlined"
               value={value}
               onChange={onChange}
-              style = {{width:"27%"}}
+              style = {{width: `${windowDimensions.width > 700 ? "27%": "100%"}`}}
               error={!!error}
               helperText={error ? error.message : null}
             />
           )}
         /> 
 
-        <TextField {...register("requesterSecondaryTelephone")} 
+        <TextField 
+        {...register("requesterSecondaryTelephone")} 
           required id="outlined-required" 
           label="Telefone secundário" 
           variant="outlined" 
-          style = {{width:"27%"}} />
+          style = {{width: `${windowDimensions.width > 700 ? "27%": "100%"}`}}
+        />
 
          <br/>
          <br/>
@@ -173,6 +177,7 @@ export default function FormPropsTextFields() {
               helperText={error ? error.message : null}
               value={value}
               onChange={onChange}
+              style = {{width: `${windowDimensions.width > 700 ? "": "100%"}`}}
           >
               <MenuItem value="" disabled>
                   <em>Selecione sim ou não</em>

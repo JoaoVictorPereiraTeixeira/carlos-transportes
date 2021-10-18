@@ -10,31 +10,36 @@ type Props = {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     logoContainer:{
-      left:"60%",
-      top:"30%",
-      position: "absolute"
+      [theme.breakpoints.up('md')] : {
+        left:"60%",
+        top:"30%",
+        position: "absolute",
+      },
+      height:"60vw"
     },
     img:{
-      width:"501px",
-      height:"189px"
+      [theme.breakpoints.up('md')] : {
+        width:"501px",
+        height:"189px"
+      },
+      [theme.breakpoints.up('sm')] : {
+        width:"501px",
+        height:"189px"
+      },
+      width:"88vw",
+      height:"35vw"
     }
   }),
 );
 
 const LogoHome = (props: Props) => {
-    let windowDimensions = useWindowDimensions();
 
     const classes = useStyles();
     return (
       <>
-        {
-          windowDimensions.width > 1000 ? 
-          (
-            <div className={classes.logoContainer}>
-              <img src={logoHome} alt="Logo Carlos Transporte" className={classes.img} />
-            </div>
-          ) : (<div></div>)
-      }
+        <div className={classes.logoContainer}>
+          <img src={logoHome} alt="Logo Carlos Transporte" className={classes.img} />
+        </div>       
       </> 
     )
 };

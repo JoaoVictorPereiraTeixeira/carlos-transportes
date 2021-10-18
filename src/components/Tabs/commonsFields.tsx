@@ -1,9 +1,9 @@
 // @flow 
 import { TextField } from '@material-ui/core';
-import * as React from 'react';
 import { Controller } from 'react-hook-form';
 import CorreiosService from '../../service/CorreiosService';
 import Toastr from '../toastr/index';
+import useWindowDimensions from '../../utils/responsive/index'
 
 type Props = {
     control: any;
@@ -11,7 +11,8 @@ type Props = {
     setValue: any;
 };
 export const CommonsFields = (props: Props) => {
-
+    let windowDimensions = useWindowDimensions();
+    
     function setCEPInformations(event : any, fieldTarget: any){
         let correiosService = new CorreiosService();
         var validacep = /^[0-9]{8}$/;
@@ -42,20 +43,21 @@ export const CommonsFields = (props: Props) => {
                 defaultValue=""
                 rules={{ required: 'Campo obrigatório' }}
                 render={({field: { onChange, value }, fieldState: { error } }) => (
-                <TextField 
-                    {...props.register("originCep")} 
-                    required 
-                    error={!!error}
-                    helperText={error ? error.message : null}
-                    id="outlined-required" 
-                    label="CEP origem"
-                    value={value}
-                    onChange={(e) => {
-                        onChange(e)
-                        setCEPInformations(e,"origin")
-                    }} 
-                    variant="outlined" 
-                    style = {{width:"31%"}} />
+                    <TextField 
+                        {...props.register("originCep")} 
+                        required 
+                        error={!!error}
+                        helperText={error ? error.message : null}
+                        id="outlined-required" 
+                        label="CEP origem"
+                        value={value}
+                        onChange={(e) => {
+                            onChange(e)
+                            setCEPInformations(e,"origin")
+                        }} 
+                        variant="outlined" 
+                        style = {{width: `${windowDimensions.width > 700 ? "31%": "100%"}`}}
+                    />
                 )}
             />
             <Controller
@@ -63,16 +65,18 @@ export const CommonsFields = (props: Props) => {
                 control={props.control}
                 rules={{ required: 'Campo obrigatório' }}
                 render={({field: { onChange, value }, fieldState: { error } }) => (
-                <TextField 
-                    {...props.register("originCity")} 
-                    required
-                    error={!!error}
-                    helperText={error ? error.message : null}
-                    id="outlined-required"
-                    label="Cidade de origem"
-                    value={value != null ? value : ""}
-                    onChange={onChange}
-                    variant="outlined" />
+                    <TextField 
+                        {...props.register("originCity")} 
+                        required
+                        error={!!error}
+                        helperText={error ? error.message : null}
+                        id="outlined-required"
+                        label="Cidade de origem"
+                        value={value != null ? value : ""}
+                        onChange={onChange}
+                        variant="outlined"
+                        style = {{width: `${windowDimensions.width > 700 ? "": "100%"}`}}
+                    />
                 )}
             />    
 
@@ -81,16 +85,18 @@ export const CommonsFields = (props: Props) => {
                 control={props.control}
                 rules={{ required: 'Campo obrigatório' }}
                 render={({field: { onChange, value }, fieldState: { error } }) => (
-                <TextField 
-                    {...props.register("originAddress")} 
-                    required
-                    error={!!error}
-                    helperText={error ? error.message : null}
-                    id="outlined-required"
-                    label="Endereço de origem"
-                    value={value != null ? value : ""}
-                    onChange={onChange}
-                    variant="outlined" />
+                    <TextField 
+                        {...props.register("originAddress")} 
+                        required
+                        error={!!error}
+                        helperText={error ? error.message : null}
+                        id="outlined-required"
+                        label="Endereço de origem"
+                        value={value != null ? value : ""}
+                        onChange={onChange}
+                        variant="outlined"
+                        style = {{width: `${windowDimensions.width > 700 ? "": "100%"}`}}
+                    />
                 )}
             />
 
@@ -99,16 +105,18 @@ export const CommonsFields = (props: Props) => {
                 control={props.control}
                 rules={{ required: 'Campo obrigatório' }}
                 render={({field: { onChange, value }, fieldState: { error } }) => (
-                <TextField 
-                {...props.register("originDistrict")} 
-                required
-                error={!!error}
-                helperText={error ? error.message : null}
-                id="outlined-required" 
-                label="Bairro de origem"
-                value={value != null ? value : ""}
-                onChange={onChange}
-                variant="outlined" />
+                    <TextField 
+                        {...props.register("originDistrict")} 
+                        required
+                        error={!!error}
+                        helperText={error ? error.message : null}
+                        id="outlined-required" 
+                        label="Bairro de origem"
+                        value={value != null ? value : ""}
+                        onChange={onChange}
+                        variant="outlined"
+                        style = {{width: `${windowDimensions.width > 700 ? "": "100%"}`}}
+                    />
                 )}
             />     
 
@@ -118,16 +126,18 @@ export const CommonsFields = (props: Props) => {
                 defaultValue=""
                 rules={{ required: 'Campo obrigatório' }}
                 render={({field: { onChange, value }, fieldState: { error } }) => (
-                <TextField 
-                    {...props.register("originNumber")} 
-                    required
-                    error={!!error}
-                    helperText={error ? error.message : null}
-                    id="outlined-required" 
-                    label="Número de origem"
-                    value={value}
-                    onChange={onChange}
-                    variant="outlined"/>
+                    <TextField 
+                        {...props.register("originNumber")} 
+                        required
+                        error={!!error}
+                        helperText={error ? error.message : null}
+                        id="outlined-required" 
+                        label="Número de origem"
+                        value={value}
+                        onChange={onChange}
+                        variant="outlined"
+                        style = {{width: `${windowDimensions.width > 700 ? "": "100%"}`}}
+                    />
                 )}
             />
 
@@ -140,20 +150,21 @@ export const CommonsFields = (props: Props) => {
                 defaultValue=""
                 rules={{ required: 'Campo obrigatório' }}
                 render={({field: { onChange, value }, fieldState: { error } }) => (
-                <TextField 
-                    {...props.register("destinyCep")} 
-                    required 
-                    error={!!error}
-                    helperText={error ? error.message : null}
-                    id="outlined-required" 
-                    label="CEP destino"
-                    value={value}
-                    onChange={(e) => {
-                    onChange(e)
-                    setCEPInformations(e,"destiny")
-                    }} 
-                    variant="outlined" 
-                    style = {{width:"31%"}} />
+                    <TextField 
+                        {...props.register("destinyCep")} 
+                        required 
+                        error={!!error}
+                        helperText={error ? error.message : null}
+                        id="outlined-required" 
+                        label="CEP destino"
+                        value={value}
+                        onChange={(e) => {
+                        onChange(e)
+                        setCEPInformations(e,"destiny")
+                        }} 
+                        variant="outlined" 
+                        style = {{width: `${windowDimensions.width > 700 ? "31%": "100%"}`}} 
+                    />
                 )}
             />
 
@@ -162,16 +173,18 @@ export const CommonsFields = (props: Props) => {
                 control={props.control}          
                 rules={{ required: 'Campo obrigatório' }}
                 render={({field: { onChange, value }, fieldState: { error } }) => (
-                <TextField 
-                    {...props.register("destinyCity")}
-                    required
-                    error={!!error}
-                    helperText={error ? error.message : null}
-                    id="outlined-required"
-                    value={value != null ? value : ""}
-                    onChange={onChange}
-                    label="Cidade de destino" 
-                    variant="outlined"/>
+                    <TextField 
+                        {...props.register("destinyCity")}
+                        required
+                        error={!!error}
+                        helperText={error ? error.message : null}
+                        id="outlined-required"
+                        value={value != null ? value : ""}
+                        onChange={onChange}
+                        label="Cidade de destino" 
+                        style = {{width: `${windowDimensions.width > 700 ? "": "100%"}`}}
+                        variant="outlined"
+                    />
                 )}
             />
 
@@ -180,16 +193,18 @@ export const CommonsFields = (props: Props) => {
                 control={props.control}
                 rules={{ required: 'Campo obrigatório' }}
                 render={({field: { onChange, value }, fieldState: { error } }) => (
-                <TextField 
-                    {...props.register("destinyAddress")} 
-                    required
-                    error={!!error}
-                    helperText={error ? error.message : null}
-                    id="outlined-required"
-                    label="Endereço de destino"
-                    value={value != null ? value : ""}
-                    onChange={onChange}
-                    variant="outlined" />
+                    <TextField 
+                        {...props.register("destinyAddress")} 
+                        required
+                        error={!!error}
+                        helperText={error ? error.message : null}
+                        id="outlined-required"
+                        label="Endereço de destino"
+                        value={value != null ? value : ""}
+                        onChange={onChange}
+                        style = {{width: `${windowDimensions.width > 700 ? "": "100%"}`}}
+                        variant="outlined" 
+                    />
                 )}
             />
 
@@ -198,16 +213,18 @@ export const CommonsFields = (props: Props) => {
                 control={props.control}
                 rules={{ required: 'Campo obrigatório' }}
                 render={({field: { onChange, value }, fieldState: { error } }) => (
-                <TextField 
-                {...props.register("destinyDistrict")} 
-                required
-                error={!!error}
-                helperText={error ? error.message : null}
-                id="outlined-required" 
-                label="Bairro de destino"
-                value={value != null ? value : ""}
-                onChange={onChange}
-                variant="outlined" />
+                    <TextField 
+                        {...props.register("destinyDistrict")} 
+                        required
+                        error={!!error}
+                        helperText={error ? error.message : null}
+                        id="outlined-required" 
+                        label="Bairro de destino"
+                        value={value != null ? value : ""}
+                        onChange={onChange}
+                        variant="outlined"
+                        style = {{width: `${windowDimensions.width > 700 ? "": "100%"}`}}
+                    />
                 )}
             />     
 
@@ -217,16 +234,18 @@ export const CommonsFields = (props: Props) => {
                 defaultValue=""
                 rules={{ required: 'Campo obrigatório' }}
                 render={({field: { onChange, value }, fieldState: { error } }) => (
-                <TextField 
-                    {...props.register("destinyNumber")} 
-                    required
-                    error={!!error}
-                    helperText={error ? error.message : null}
-                    id="outlined-required" 
-                    label="Número de destino"
-                    value={value}
-                    onChange={onChange}
-                    variant="outlined"/>
+                    <TextField 
+                        {...props.register("destinyNumber")} 
+                        required
+                        error={!!error}
+                        helperText={error ? error.message : null}
+                        id="outlined-required" 
+                        label="Número de destino"
+                        value={value}
+                        onChange={onChange}
+                        variant="outlined"
+                        style = {{width: `${windowDimensions.width > 700 ? "": "100%"}`}}
+                    />
                 )}
             />
         </>

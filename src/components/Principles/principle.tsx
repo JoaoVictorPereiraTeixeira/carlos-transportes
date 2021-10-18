@@ -22,6 +22,8 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     principleImage:{
         display: "flex",
+        flexDirection:"column",
+        justifyContent:"center",
         alignItems: "center",
         borderRadius: "180px",
         background:  '#F5F5F5',
@@ -30,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
         width: "200px"
     },
     img:{
-      marginLeft: "25%",
+      
     },
     contentPrinciple:{
         display: "flex",

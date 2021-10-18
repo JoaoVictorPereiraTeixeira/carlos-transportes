@@ -1,4 +1,3 @@
-import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import {useContext} from 'react';
 import {DispatchContext} from '../../Context'
@@ -7,6 +6,8 @@ import { Button, MenuItem } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 import DateFnsUtils from '@date-io/date-fns';
 import { useForm, Controller} from 'react-hook-form';
+import useWindowDimensions from '../../utils/responsive/index'
+
 import Toastr from '../toastr/index';
 import {
   MuiPickersUtilsProvider
@@ -37,6 +38,7 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function FormPropsTextFields() {
   const classes = useStyles();
   const {state} = useContext(DispatchContext)
+  let windowDimensions = useWindowDimensions();
 
   function resetValues(){
     setValue("destinyAddress", undefined)
@@ -78,16 +80,17 @@ export default function FormPropsTextFields() {
   }
     
     return (
-        <form 
-            onSubmit={handleSubmit(onSubmit)}
-            className={classes.root} 
-            noValidate autoComplete="off">
-            <p>
-                De mudança?
+      <form 
+        onSubmit={handleSubmit(onSubmit)}
+        className={classes.root} 
+        noValidate autoComplete="off"
+      >
+        <p>
+            De mudança?
 
-                Bora facilitar tudo isso! 😁 Confira os horários que estamos disponíveis no calendário abaixo, após isso simplesmente preencha o formulário  logo abaixo e entraremos em contato  o mais rápido possível 
-            </p>
-            <br/>
+            Bora facilitar tudo isso! 😁 Confira os horários que estamos disponíveis no calendário abaixo, após isso simplesmente preencha o formulário  logo abaixo e entraremos em contato  o mais rápido possível 
+        </p>
+        <br/>
             
         <div>
             
@@ -104,7 +107,7 @@ export default function FormPropsTextFields() {
               variant="outlined"
               value={value}
               onChange={onChange}
-              style = {{width:"31%"}}
+              style = {{width: `${windowDimensions.width > 700 ? "31%": "100%"}`}}
               error={!!error}
               helperText={error ? error.message : null}
             />
@@ -125,7 +128,7 @@ export default function FormPropsTextFields() {
               variant="outlined"
               value={value}
               onChange={onChange}
-              style = {{width:"27%"}}
+              style = {{width: `${windowDimensions.width > 700 ? "27%": "100%"}`}}
               error={!!error}
               helperText={error ? error.message : null}
             />
@@ -136,7 +139,8 @@ export default function FormPropsTextFields() {
           id="outlined-basic"
           label="Telefone secundário"
           variant="outlined" 
-          style = {{width:"27%"}} />
+          style = {{width: `${windowDimensions.width > 700 ? "27%": "100%"}`}} 
+        />
 
          <br/>
          <br/>
@@ -199,6 +203,7 @@ export default function FormPropsTextFields() {
                     helperText={error ? error.message : null}
                     value={value}
                     onChange={onChange}
+                    style = {{width: `${windowDimensions.width > 700 ? "20%": "100%"}`}}
                 >
                     <MenuItem value="" disabled>
                         <em>Selecione tipo moradia</em>
@@ -233,6 +238,7 @@ export default function FormPropsTextFields() {
                 error={!!error}
                 helperText={error ? error.message : null}
                 value={value}
+                style = {{width: `${windowDimensions.width > 700 ? "20%": "100%"}`}}
                 onChange={onChange}
             >
                 <MenuItem value="" disabled>
@@ -266,6 +272,7 @@ export default function FormPropsTextFields() {
                 error={!!error}
                 helperText={error ? error.message : null}
                 value={value}
+                style = {{width: `${windowDimensions.width > 700 ? "20%": "100%"}`}}
                 onChange={onChange}
             >
                 <MenuItem value="" disabled>
@@ -296,6 +303,6 @@ export default function FormPropsTextFields() {
                 </Button>
             </Typography>
         </div>
-        </form>
+      </form>
     );
 }

@@ -11,18 +11,21 @@ interface PageFormProps {
 const useStyles = makeStyles((theme : Theme) => ({
     imagesRight:{
         marginTop:"100px",
-        marginRight:"50px",
         borderRadius: "50px",
         [theme.breakpoints.up(550)] : {
-            height:"300px"
+            height:"300px",
+            marginRight:"50px"
         },
-        height:"250px"
-
+        height:"55vw"
     },
     imagesLeft:{
         marginTop:"100px",
-        marginLeft:"50px",
         borderRadius: "50px",
+        [theme.breakpoints.up(550)] : {
+            height:"300px",
+            marginLeft:"50px"
+        },
+        height:"80vw"
     },
     containerTruck:{
         display: "flex",

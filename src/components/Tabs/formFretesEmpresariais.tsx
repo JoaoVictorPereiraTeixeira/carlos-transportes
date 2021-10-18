@@ -6,6 +6,7 @@ import { useForm, Controller } from "react-hook-form";
 import DateFnsUtils from '@date-io/date-fns';
 import { Typography } from '@material-ui/core';
 import Toastr from '../toastr/index';
+import useWindowDimensions from '../../utils/responsive/index'
 
 import {
     MuiPickersUtilsProvider
@@ -23,7 +24,9 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     textField:{
-        width: 129
+      [theme.breakpoints.up('md')] : {
+        width:"500px"
+      },
     },
     buttonSubmit: {
         flexGrow: 1,
@@ -46,6 +49,7 @@ function handleFormData(formData: any){
 export default function FormPropsTextFields() {
   const classes = useStyles();
   const {register, handleSubmit, setValue, control} = useForm();
+  let windowDimensions = useWindowDimensions();
   
   const onSubmit = (formData: any) => {
     formData = handleFormData(formData)
@@ -101,7 +105,7 @@ export default function FormPropsTextFields() {
               variant="outlined"
               value={value}
               onChange={onChange}
-              style = {{width:"31%"}}
+              style = {{width: `${windowDimensions.width > 700 ? "31%": "100%"}`}}
               error={!!error}
               helperText={error ? error.message : null}
             />
@@ -121,7 +125,7 @@ export default function FormPropsTextFields() {
               variant="outlined"
               value={value}
               onChange={onChange}
-              style = {{width:"27%"}}
+              style = {{width: `${windowDimensions.width > 700 ? "27%": "100%"}`}}
               error={!!error}
               helperText={error ? error.message : null}
             />
@@ -133,9 +137,17 @@ export default function FormPropsTextFields() {
             id="outlined-basic" 
             label="CNPJ Remente" 
             variant="outlined" 
-            style = {{width:"27%"}} />
+            style = {{width: `${windowDimensions.width > 700 ? "27%": "100%"}`}}
+          />
             
-         <TextField {...register("cnpjRecipient")} id="outlined-basic" label="CNPJ Destinatário" variant="outlined" style = {{width:"31%"}} />
+         <TextField 
+          {...register("cnpjRecipient")} 
+          id="outlined-basic" 
+          label="CNPJ Destinatário" 
+          variant="outlined" 
+          fullWidth 
+          style = {{width: `${windowDimensions.width > 700 ? "31%": "100%"}`}}
+        />
         
 
          <Controller
@@ -157,7 +169,7 @@ export default function FormPropsTextFields() {
               value={value}
               onChange={onChange}
               variant={'outlined'}
-              style = {{width:"18%"}}
+              style = {{width: `${windowDimensions.width > 700 ? "18%": "100%"}`}}
               
           >
               <MenuItem value="" disabled>
@@ -189,12 +201,19 @@ export default function FormPropsTextFields() {
             id="filled-start-adornment"
             label="Peso" 
             variant="outlined" 
+            style = {{width: `${windowDimensions.width > 700 ? "10%": "100%"}`}}
             InputProps={{
                 startAdornment: <InputAdornment position="start">Kg</InputAdornment>,
             }}
             
         />
-         <TextField {...register("quantityItems")} id="outlined-basic" label="Quant. items" variant="outlined" style = {{width:"10%"}} />
+         <TextField 
+          {...register("quantityItems")} 
+          id="outlined-basic" 
+          label="Quant. items" 
+          variant="outlined" 
+          style = {{width: `${windowDimensions.width > 700 ? "10%": "100%"}`}}
+        />
         
          <Controller
           name="dateToCollect"
@@ -203,22 +222,21 @@ export default function FormPropsTextFields() {
           rules={{ required: 'Campo obrigatório' }}
           render={({field: { onChange, value }, fieldState: { error } }) => (
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                    <TextField
-                        {...register("dateToCollect")}
-                        id="datetime-local"
-                        required
-                        error={!!error}
-                        helperText={error ? error.message : null}
-                        label="Data e hora de coleta"
-                        type="datetime-local"
-                        defaultValue="2021-08-24T10:30"
-                        className={classes.textField}
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                        value={value}
-                        onChange={onChange}
-                    />
+              <TextField
+                  {...register("dateToCollect")}
+                  id="datetime-local"
+                  required
+                  error={!!error}
+                  helperText={error ? error.message : null}
+                  label="Data e hora de coleta"
+                  type="datetime-local"
+                  defaultValue="2021-08-24T10:30"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  value={value}
+                  onChange={onChange}
+              />
             </MuiPickersUtilsProvider>
           )}/>
         
@@ -226,13 +244,14 @@ export default function FormPropsTextFields() {
         <br/>
 
          <TextField 
-            {...register("collectObservations")} 
-            id="outlined-basic" 
-            label="Observações para coleta" 
-            variant="outlined" 
-            multiline 
-            rows="4"
-            style = {{width:"100%"}}/>
+          {...register("collectObservations")} 
+          id="outlined-basic" 
+          label="Observações para coleta" 
+          variant="outlined" 
+          multiline 
+          rows="4"
+          style = {{width:"100%"}}
+        />
          <br/>
 
           <TextField 

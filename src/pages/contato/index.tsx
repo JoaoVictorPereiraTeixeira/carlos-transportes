@@ -5,6 +5,8 @@ import whatsappLogo from '../../static/img/whatsappLogo.png'
 import gmailLogo from '../../static/img/gmailLogo.png'
 import facebookLogo from  '../../static/img/facebookLogoBlue.png'
 import backgroundContact from '../../static/img/backgroundContact.png'
+import useWindowDimensions from '../../utils/responsive/index'
+
 
 interface PageFormProps {
     
@@ -16,7 +18,10 @@ const useStyles = makeStyles((theme : Theme) => ({
         backgroundPosition: 'center', 
         backgroundSize: 'cover', 
         backgroundRepeat: 'no-repeat',
-        height:"900px",
+        height:"100%",
+        [theme.breakpoints.up('md')] : {
+            height:"900px",
+        },
         display: 'flex',
         flexDirection:"column",
         marginTop:"0px"
@@ -34,11 +39,11 @@ const useStyles = makeStyles((theme : Theme) => ({
     containerContact:{
         background: "rgba(255, 255, 255, 0.38)",
         borderRadius: "30px",
-        padding:"50px",
+        paddingTop:"50px",
         [theme.breakpoints.up('md')] : {
             width:"600px",
+            padding:"50px"
         },
-        width:"450px",
         height:"300px"
     },
     contentContact:{
@@ -49,27 +54,30 @@ const useStyles = makeStyles((theme : Theme) => ({
     contactText:{
         marginLeft:"10px"
     },
+    field:{
+        marginTop:"20px",
+        width:"100%",
+        background:"#F5F5F5"
+    },
+    buttonSubmit: {
+        flexGrow: 1,
+        textAlign:'center',
+        marginTop:"24px",
+        width:"200px"
+    },
     callToAction:{
         display:"flex",
         flexDirection: "column",
         alignItems:"center",
-        background:"#FFFFFF",
-        width:"450px",
+        background: "rgba(255, 255, 255, 0.60)",
         padding:"30px",
-        [theme.breakpoints.down('md')] : {
-            marginTop:"30px",
+
+        [theme.breakpoints.up('md')] : {
+            background: "#FFFFFF",
         },
-    },
-    field:{
-        marginTop:"20px",
-        width:"400px",
-        background:"#F5F5F5"
-    },
-    buttonSubmit: {
-      flexGrow: 1,
-      textAlign:'center',
-      marginTop:"24px",
-      width:"200px"
+        [theme.breakpoints.down('md')] : {
+            marginTop:"30px"
+        },
     },
     textCallToAction:{
         display: "flex",
@@ -83,6 +91,7 @@ const useStyles = makeStyles((theme : Theme) => ({
 
 export const ContatoPage = (props: PageFormProps) => {
     const classes = useStyles();
+    let windowDimensions = useWindowDimensions();
    
     return (
         <div className={classes.backgroundContact}>
@@ -110,16 +119,15 @@ export const ContatoPage = (props: PageFormProps) => {
                         </div>
                     </div>
                     <div>
-                        <div className={classes.callToAction}>
+                        <div className={classes.callToAction} style = {{width: `${windowDimensions.width > 700 ? "450px": "100%"}`}}>
                             <p className={classes.textCallToAction}>Preencha os campos abaixo e entraremos em contato</p>
                             <TextField id="outlined-basic" label="Nome *" variant="outlined" className={classes.field}/>
                             <TextField id="outlined-basic" label="Email *" variant="outlined" className={classes.field}/>
                             <TextField id="outlined-basic" label="Telefone *" variant="outlined" className={classes.field}/>
                             <TextField id="outlined-basic" label="Empresa (opcional)" variant="outlined" className={classes.field}/>
 
-                            
                             <Button variant="contained" size="large" color="primary" className={classes.buttonSubmit}>
-                                Enviar feedback
+                                Enviar
                             </Button>
                         </div>
                     </div>

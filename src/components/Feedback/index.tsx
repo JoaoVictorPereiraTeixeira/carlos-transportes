@@ -108,7 +108,7 @@ const Feedback = (props: Props) => {
           </div>
           <div className={classes.subContainer}>
             <p className={classes.textFeedback}>Aproveite o espaço abaixo para deixar sugestões de melhoria, elogios entre outros. Todas as respostas são anônimas 😉</p> 
-            <TextField value={state.feedback.description} onChange={handleChange} id="outlined-basic" label="Queremos sua opinão! Estamos indo bem? (opcional)" variant="outlined"  multiline rows="4" style = {{width:"100%", marginTop:"20px"}}/>
+            <TextField value={state.feedback.description} onChange={handleChange} id="outlined-basic" label="Queremos sua opinão! Estamos indo bem?" variant="outlined"  multiline rows="4" style = {{width:"100%", marginTop:"20px"}}/>
             <Button onClick={sendFeedback} variant="contained" size="large" color="primary" className={classes.buttonSubmit}>
                 Enviar feedback
             </Button>

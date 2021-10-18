@@ -5,6 +5,7 @@ import {DispatchContext} from '../../Context'
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import {GrFormSubtract} from "react-icons/gr"
 import {IoMdAdd} from "react-icons/io"
+import useWindowDimensions from '../../utils/responsive/index'
 
 type Props = {
     item: string,
@@ -21,7 +22,9 @@ const useStyles = makeStyles((theme: Theme) =>
       width: "100%",
       background: "#F5F5F5",
       borderRadius:"4px",
-      padding:"10px",
+      [theme.breakpoints.up('sm')] : {
+        padding:"10px",
+      },
       height: "70px",
       "&:hover": {
         background: "#E4E2E2",
@@ -29,11 +32,10 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     containerQuantity:{
       display: "flex",
-      alignItems: "center",
-      marginLeft: "5%"
+      alignItems: "center"
     },
     item:{
-      width:"100%"
+      fontSize:"15px"
     }
   }),
 );
@@ -41,15 +43,14 @@ const useStyles = makeStyles((theme: Theme) =>
 const TransportItem = (props: Props) => {
     const classes = useStyles();
     const {dispatch} = useContext(DispatchContext)
+    let windowDimensions = useWindowDimensions();
 
     const add = () => {
-      // setQuantity(quantity + 1)
       dispatch({type: 'CHANGE_QUANTITY_ITEM_TRANSPORT', itemToTransport: props.originalText, quantity: props.quantity + 1})
     }
 
     const decrease = () => {
       if(props.quantity > 0){
-        // setQuantity(quantity - 1)
         dispatch({type: 'CHANGE_QUANTITY_ITEM_TRANSPORT', itemToTransport: props.originalText,  quantity: props.quantity - 1})
       }
     }
@@ -70,15 +71,15 @@ const TransportItem = (props: Props) => {
            <IconButton onClick={handleDeleteAction}>
             <DeleteOutlineOutlinedIcon/>
           </IconButton>
-          <div className={classes.item}>
+          <div className={classes.item} style={{width:`${windowDimensions.width > 400 ? "100%" : "40px"}`}}>
             <p>{props.showText}</p>
           </div>
-          <div className={classes.containerQuantity}>
+          <div className={classes.containerQuantity} style={{marginLeft:`${windowDimensions.width > 600 ? "" : "30px"}`}}>
             <IconButton onClick={decrease}>
               <GrFormSubtract/>
             </IconButton>
             
-            <TextField id="outlined-basic" variant="outlined" size="small" style={{width:"60px"}} value={props.quantity} onChange={handleChangeIncrease}/>
+            <TextField id="outlined-basic" variant="outlined" size="small" style={{width:"50px"}} value={props.quantity} onChange={handleChangeIncrease}/>
             
             <IconButton onClick={add}>
               <IoMdAdd/>

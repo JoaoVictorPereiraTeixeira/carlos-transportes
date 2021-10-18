@@ -8,22 +8,22 @@ type Props = {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     principle:{
-      width:"320px",
       height: "300px",
-      margin: "20px"
+      margin: "8px"
     },
     principleImage:{
-        display: "flex",
-        alignItems: "center",
-        borderRadius: "180px",
-        background:  '#F5F5F5',
-        marginTop: "30px",
-        marginLeft: "-20px",
-        height:"150px",
-        width: "150px"
+      display: "flex",
+      flexDirection:'column',
+      justifyContent: 'center',
+      alignItems: "center",
+      borderRadius: "180px",
+      background:  '#F5F5F5',
+      marginTop: "30px",
+      height:"100px",
+      width: "100px"
     },
     img:{
-      marginLeft: "18%",
+      height: '40px'
     },
     contentPrinciple:{
         display: "flex",
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
         textAlign:"center"
     },
     h1:{
-     fontSize:"24px",
+     fontSize:"15px",
      color: "#F5F5F5"
     }
   }),
@@ -44,7 +44,7 @@ const PrincipleResponsive : React.FC<Props>  = (props) => {
         <div className={classes.principle}>
             <div className={classes.contentPrinciple}>
                 <div className={classes.principleImage}>
-                  <img src={props.img} alt="Pontualidade" className={classes.img} />
+                  <img src={props.img} alt="Principle" className={classes.img} />
                 </div>
                 <h1 className={classes.h1}>{props.title}</h1>
             </div>

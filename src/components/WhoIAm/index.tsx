@@ -14,14 +14,14 @@ const useStyles = makeStyles((theme: Theme) =>
       [theme.breakpoints.up('md')] : {
         height:"550px"
       },
-      height:"500px",
+      height:"100%",
       padding:"30px 20px"
     },
     subContainer:{
       background: "#FAFAFA",
       width:"100%",
       height:"100%",
-      padding:"30px"
+      padding:"20px",
     },
     presentation:{
       fontSize:"20px",
@@ -35,11 +35,11 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     whoIAm:{
       position:"absolute",
-      marginTop:"-150px",
+      marginTop:"-130px",
       left: "50%",
-      marginLeft: "-100px",
-      width:"170px",
-      height:"170px",
+      transform: 'translateX(-50%)',
+      width:"140px",
+      height:"140px",
       [theme.breakpoints.up('md')] : {
         width:"180px",
         height:"180px"

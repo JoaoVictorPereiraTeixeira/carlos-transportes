@@ -16,7 +16,10 @@ interface PageFormProps {
 
 const useStyles = makeStyles((theme : Theme) => ({
     container:{
-        marginTop:"100px"
+        marginTop:"50px",
+        [theme.breakpoints.up('md')] : {
+            marginTop:"100px"
+        },
     },
     backgroundHome:{
         backgroundImage: `url(${backgroundHomeBig})`,
@@ -27,13 +30,15 @@ const useStyles = makeStyles((theme : Theme) => ({
         display: 'flex',
         flexDirection:"column",
         marginTop:"0px"
-         
     },
     principles:{
-        marginTop:"10%"
+        marginTop:"5%"
     },
     whoIAm : {
-        marginTop: "280px"
+        marginTop: "100px",
+        [theme.breakpoints.up('md')] : {
+            marginTop:"280px"
+        },
     },
     feedback:{
         marginTop: "150px"
@@ -44,7 +49,6 @@ const useStyles = makeStyles((theme : Theme) => ({
 export const HomePage = (props: PageFormProps) => {
     const classes = useStyles();
 
-       
     return (
        <div className={classes.backgroundHome}>
             <Page>

@@ -14,11 +14,14 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     container:{
       display: "flex",
+      flexDirection: "column",
+      [theme.breakpoints.up('md')] : {
+        flexDirection: "row",
+      },
       justifyContent: "space-around",
       width:"100%",
-      height:"250px",
       background:"#5F5F5F",
-      padding:"50px",
+      padding:"20px",
       marginTop:"150px"
     },
     title:{
@@ -51,7 +54,7 @@ const Footer = (props: Props) => {
               Visite nossas redes sociais!
             </p>
             <div className={classes.networkContainer}>
-              <img style={{cursor: "pointer", marginRight:"12px"}} src={facebookLogo} alt="Ícone Facebook"/>
+              <img style={{cursor: "pointer", marginRight:"10px"}} src={facebookLogo} alt="Ícone Facebook"/>
               <img style={{cursor: "pointer"}} src={linkedInLogo} alt="Ícone LinkedIn"/>
             </div>
           </div>

@@ -1,16 +1,17 @@
 import * as React from 'react';
-import {IconButton, Menu as MuiMenu, MenuItem } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
+import {IconButton, makeStyles, Menu as MuiMenu, MenuItem } from '@material-ui/core';
+import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import routes, { myRouteProps } from '../../routes/index';
+import { yellow } from '@mui/material/colors';
 
 type Props = {
     itemsToShow : any
 }
 
+
 export const Menu = (props: Props) => {
     const menuRoutes = routes.filter(route => Object.keys(props.itemsToShow).includes(route.name))
-
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
 
@@ -27,7 +28,7 @@ export const Menu = (props: Props) => {
                 aria-haspopup="true"
                 onClick={handleOpen}
             >
-                <MenuIcon/>
+                <MenuIcon sx={{ color: yellow[500] }} />
             </IconButton>
             <MuiMenu
                 id="menu-appbar"

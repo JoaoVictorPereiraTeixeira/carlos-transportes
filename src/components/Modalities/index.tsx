@@ -18,12 +18,15 @@ const useStyles = makeStyles((theme: Theme) =>
       cursor:"pointer",
       padding:"8px",
       borderRadius:"8px",
-      fontSize:"48px",
+      fontSize:"32px",
+      [theme.breakpoints.up('sm')] : {
+        fontSize:"50px",
+      },
       color: "#FFFFFF",
       fontWeight: "normal",
     },
     container:{
-      marginBottom: "10px"
+      marginBottom: "15px"
     }
   }),
 );
